@@ -226,4 +226,21 @@ describe('DetailPage', () => {
     expect(TestBed.inject(BookingService).reservas().length).toBe(0);
     expect(html.textContent).toContain('Ingresa un correo electrónico válido');
   });
+
+  it('ofrece el enlace "Más fotos" a la galería completa', async () => {
+    const { html } = await abrir('/alojamientos/1');
+    const enlace = Array.from(html.querySelectorAll('a')).find((a) => a.textContent?.includes('Más fotos'));
+    expect(enlace?.getAttribute('href')).toBe('/alojamientos/1/galeria');
+  });
+
+  it('ofrece escribir una reseña, tenga o no reseñas', async () => {
+    const conResenas = await abrir('/alojamientos/1');
+    const enlace1 = Array.from(conResenas.html.querySelectorAll('a')).find((a) => a.textContent?.includes('Escribir una reseña'));
+    expect(enlace1?.getAttribute('href')).toBe('/alojamientos/1/resena');
+    TestBed.resetTestingModule();
+
+    const sinResenas = await abrir('/alojamientos/2');
+    const enlace2 = Array.from(sinResenas.html.querySelectorAll('a')).find((a) => a.textContent?.includes('Escribir una reseña'));
+    expect(enlace2?.getAttribute('href')).toBe('/alojamientos/2/resena');
+  });
 });

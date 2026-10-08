@@ -70,6 +70,10 @@ export class DetailPage implements OnInit {
       this.resenas.set(await this.resenaService.getByAccommodation(alojamiento.id));
       this.alojamiento.set(alojamiento);
       this.estado.set('listo');
+      if (this.route.snapshot.fragment === 'resenas') {
+        // Se espera a que Angular dibuje la sección antes de desplazarse hasta ella.
+        setTimeout(() => document.getElementById('resenas')?.scrollIntoView());
+      }
     } catch (error) {
       console.error('No se pudo cargar el detalle:', error);
       this.estado.set('error');

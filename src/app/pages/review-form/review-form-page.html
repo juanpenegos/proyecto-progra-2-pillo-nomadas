@@ -1,0 +1,75 @@
+@switch (estado()) {
+  @case ('cargando') {
+    <h1 class="solo-lector">Escribir una reseña</h1>
+    <app-loading-indicator texto="Cargando…" />
+  }
+  @case ('error') {
+    <h1 class="solo-lector">Escribir una reseña</h1>
+    <app-error-state
+      mensaje="No pudimos cargar el formulario. Revisa tu conexión e inténtalo de nuevo."
+      (reintentar)="cargar()"
+    />
+  }
+  @case ('noEncontrado') {
+    <app-not-found-page />
+  }
+  @case ('listo') {
+    @if (alojamiento(); as a) {
+      <section class="resena contenedor">
+        <nav class="resena__migas" aria-label="Migas de pan">
+          <a routerLink="/">Inicio</a>
+          <span aria-hidden="true">/</span>
+          <a [routerLink]="['/alojamientos', a.id]">{{ a.nombre }}</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Escribir una reseña</span>
+        </nav>
+
+        <header>
+          <h1>Escribir una reseña</h1>
+          <p class="resena__intro">
+            Comparte tu experiencia en <strong>{{ a.nombre }}</strong> con la comunidad para ayudar a otros nómadas a
+            tomar la mejor decisión.
+          </p>
+        </header>
+
+        <form class="resena__formulario" [formGroup]="formulario" (ngSubmit)="enviar()" novalidate>
+          <div class="resena__campo">
+            <span class="resena__etiqueta" id="resena-calificacion">Tu calificación</span>
+            <app-rating-input [valor]="formulario.controls.calificacion.value" (valorChange)="elegirCalificacion($event)" />
+            <p class="resena__error" id="resena-calificacion-error" role="alert">
+              @if (invalido('calificacion')) {
+                Selecciona una calificación de 1 a 5 estrellas
+              }
+            </p>
+          </div>
+
+          <div class="resena__campo">
+            <label class="resena__etiqueta" for="resena-comentario">Tu comentario</label>
+            <textarea
+              class="resena__comentario"
+              id="resena-comentario"
+              rows="5"
+              maxlength="500"
+              placeholder="Cuéntanos sobre tu experiencia en este alojamiento..."
+              formControlName="comentario"
+              [attr.aria-invalid]="invalido('comentario')"
+              aria-describedby="resena-comentario-error"
+            ></textarea>
+            <p class="resena__error" id="resena-comentario-error" role="alert">
+              @if (invalido('comentario')) {
+                Escribe tu comentario para poder enviar la reseña
+              }
+            </p>
+          </div>
+
+          <p class="resena__error" role="alert">{{ errorGeneral() }}</p>
+
+          <div class="resena__acciones">
+            <button type="submit" class="boton boton--primario">Enviar reseña</button>
+            <button type="button" class="boton boton--secundario" (click)="cancelar()">Cancelar</button>
+          </div>
+        </form>
+      </section>
+    }
+  }
+}

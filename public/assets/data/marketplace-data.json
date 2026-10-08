@@ -92,6 +92,43 @@
       "reglas": [
         "No fumar",
         "Silencio después de las 10 PM"
+      ],
+      "galeria": [
+        {
+          "src": "assets/images/guatape.jpg",
+          "titulo": "Vista principal",
+          "categoria": "Exterior"
+        },
+        {
+          "src": "assets/images/guatape-2.jpg",
+          "titulo": "Acceso al embalse",
+          "categoria": "Embalse"
+        },
+        {
+          "src": "assets/images/guatape-3.jpg",
+          "titulo": "Fachada de la cabaña",
+          "categoria": "Exterior"
+        },
+        {
+          "src": "assets/images/guatape-4.jpg",
+          "titulo": "Habitación principal",
+          "categoria": "Habitaciones"
+        },
+        {
+          "src": "assets/images/guatape-5.jpg",
+          "titulo": "Habitación secundaria",
+          "categoria": "Habitaciones"
+        },
+        {
+          "src": "assets/images/guatape-6.jpg",
+          "titulo": "Acceso al baño",
+          "categoria": "Baños"
+        },
+        {
+          "src": "assets/images/guatape-7.jpg",
+          "titulo": "Baño con vista",
+          "categoria": "Baños"
+        }
       ]
     },
     {

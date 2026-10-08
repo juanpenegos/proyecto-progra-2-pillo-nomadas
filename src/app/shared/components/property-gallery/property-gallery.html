@@ -3,8 +3,16 @@
     <app-image-with-fallback [src]="imagenes[0] ?? ''" [alt]="'Foto principal de ' + nombre" />
   </div>
   @if (imagenes.length > 1) {
-    <div class="galeria__secundaria">
-      <app-image-with-fallback [src]="imagenes[1]" [alt]="'Segunda foto de ' + nombre" />
+    <div class="galeria__lateral">
+      <div class="galeria__secundaria">
+        <app-image-with-fallback [src]="imagenes[1]" [alt]="'Segunda foto de ' + nombre" />
+      </div>
+      @if (rutaGaleria) {
+        <a class="galeria__mas" [routerLink]="rutaGaleria">
+          <span class="galeria__mas-signo" aria-hidden="true">+</span>
+          Más fotos
+        </a>
+      }
     </div>
   }
 </div>
