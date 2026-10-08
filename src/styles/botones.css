@@ -1,0 +1,59 @@
+/* Bloque boton: base + modificadores de color. Estados: normal, hover, foco, activo, deshabilitado */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--touch-target);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  font-size: var(--text-button);
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  transition:
+    background-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.boton:hover {
+  text-decoration: none;
+}
+
+.boton:active {
+  box-shadow: none;
+}
+
+.boton:disabled {
+  opacity: 0.5;
+}
+
+.boton--primario {
+  color: var(--white);
+  background-color: var(--green-700);
+}
+
+.boton--primario:hover {
+  background-color: var(--green-900);
+}
+
+.boton--cta {
+  color: var(--white);
+  background-color: var(--orange-500);
+  box-shadow: var(--shadow-sm);
+}
+
+.boton--cta:hover {
+  background-color: #e0900f;
+}
+
+.boton--secundario {
+  color: var(--green-700);
+  background-color: var(--white);
+  border-color: var(--green-700);
+}
+
+.boton--secundario:hover {
+  background-color: var(--green-50);
+}
