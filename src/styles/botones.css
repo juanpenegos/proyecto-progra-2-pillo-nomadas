@@ -45,7 +45,7 @@
 }
 
 .boton--cta:hover {
-  background-color: #e0900f;
+  background-color: var(--orange-600);
 }
 
 .boton--secundario {
