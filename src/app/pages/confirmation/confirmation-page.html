@@ -1,0 +1,67 @@
+<section class="confirmacion">
+  @if (reserva(); as r) {
+    <article class="confirmacion__tarjeta">
+      <img class="confirmacion__logo" src="assets/logos/logo-verde.png" alt="" width="40" height="48" />
+      <span class="confirmacion__check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5" />
+        </svg>
+      </span>
+
+      <h1 class="confirmacion__titulo">¡Reserva confirmada!</h1>
+      <p class="confirmacion__texto">
+        Hola <strong>{{ r.nombreHuesped }}</strong>, tu reserva en
+        <strong class="confirmacion__alojamiento">{{ r.alojamientoNombre }}</strong> ha sido registrada exitosamente.
+      </p>
+
+      <dl class="resumen">
+        <div class="resumen__fila">
+          <dt>Código</dt>
+          <dd>{{ r.id }}</dd>
+        </div>
+        <div class="resumen__fila">
+          <dt>Check-in</dt>
+          <dd>{{ fecha(r.llegada) }}</dd>
+        </div>
+        <div class="resumen__fila">
+          <dt>Check-out</dt>
+          <dd>{{ fecha(r.salida) }}</dd>
+        </div>
+        <div class="resumen__fila">
+          <dt>Huéspedes</dt>
+          <dd>{{ r.huespedes }}</dd>
+        </div>
+        <div class="resumen__fila">
+          <dt>Noches</dt>
+          <dd>{{ r.noches }}</dd>
+        </div>
+        <div class="resumen__fila resumen__fila--total">
+          <dt>Total</dt>
+          <dd class="resumen__total">{{ pesos(r.total) }}</dd>
+        </div>
+        <div class="resumen__estado">
+          <dt>Estado</dt>
+          <dd>
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            {{ r.estado }}
+          </dd>
+        </div>
+      </dl>
+
+      <div class="confirmacion__acciones">
+        <a class="boton boton--primario" routerLink="/mis-reservas">Ver mis reservas</a>
+        <a class="boton boton--secundario" routerLink="/">Ir al inicio</a>
+      </div>
+    </article>
+  } @else {
+    <h1 class="solo-lector">Reserva no encontrada</h1>
+    <app-empty-state
+      titulo="No encontramos esta reserva."
+      mensaje="Las reservas se guardan solo mientras la aplicación está abierta; si recargaste la página, se perdieron. Puedes hacer una nueva desde Explorar."
+      textoBoton="Explorar alojamientos"
+      (accion)="irAExplorar()"
+    />
+  }
+</section>

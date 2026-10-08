@@ -1,0 +1,11 @@
+/* Fondo suave que continúa la onda del encabezado verde */
+.reservas {
+  min-height: 24rem;
+  padding-block: var(--space-5) var(--space-7);
+  background-color: var(--green-50);
+}
+
+.reservas__lista {
+  display: grid;
+  gap: var(--space-4);
+}
