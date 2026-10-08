@@ -1,3 +1,4 @@
+import { DecimalPipe } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Accommodation } from '../../core/models/accommodation.model';
@@ -28,7 +29,7 @@ type Estado = 'cargando' | 'listo' | 'noEncontrado' | 'error';
 @Component({
   selector: 'app-detail-page',
   imports: [
-    RouterLink, ContactForm, ErrorState, InfoList, LoadingIndicator, LocationMap, NotFoundPage,
+    DecimalPipe, RouterLink, ContactForm, ErrorState, InfoList, LoadingIndicator, LocationMap, NotFoundPage,
     PropertyGallery, QuoteCard, ReviewCard, StarRating,
   ],
   templateUrl: './detail-page.html',

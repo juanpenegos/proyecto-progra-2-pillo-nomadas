@@ -1,3 +1,4 @@
+import { DecimalPipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Accommodation } from '../../../core/models/accommodation.model';
@@ -14,7 +15,7 @@ import { StarRating } from '../star-rating/star-rating';
  */
 @Component({
   selector: 'app-quote-card',
-  imports: [ReactiveFormsModule, QuoteSummary, StarRating],
+  imports: [DecimalPipe, ReactiveFormsModule, QuoteSummary, StarRating],
   templateUrl: './quote-card.html',
   styleUrl: './quote-card.css',
 })
