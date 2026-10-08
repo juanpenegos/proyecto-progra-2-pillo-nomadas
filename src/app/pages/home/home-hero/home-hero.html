@@ -1,0 +1,65 @@
+<section class="portada">
+  @if (!fotoFallo()) {
+    <img class="portada__foto" src="assets/images/hero.jpg" alt="" (error)="fotoFallo.set(true)" />
+  }
+  <div class="portada__velo"></div>
+
+  <div class="portada__contenido">
+    <div class="portada__marca">
+      <img src="assets/logos/logo-blanco.png" alt="" width="50" height="59" />
+      <div>
+        <p class="portada__nombre">Pillo Nómadas</p>
+        <p class="portada__lema">Nuestra casa es el mundo</p>
+      </div>
+    </div>
+
+    <h1 class="portada__titulo">Tu aventura empieza <span class="portada__acento">aquí</span></h1>
+
+    <p class="portada__texto">
+      Encuentra alojamientos únicos en los destinos más increíbles de Colombia. Cotiza, reserva y vive
+      experiencias inolvidables.
+    </p>
+
+    <form class="buscador" [formGroup]="busqueda" (ngSubmit)="enviar()" aria-label="Buscar alojamientos">
+      <div class="buscador__campo buscador__campo--separado">
+        <svg class="buscador__icono" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        <label class="solo-lector" for="buscador-ciudad">Destino</label>
+        <select class="buscador__select" id="buscador-ciudad" formControlName="ciudad">
+          <option value="">¿A dónde vas?</option>
+          @for (ciudad of ciudades; track ciudad) {
+            <option [value]="ciudad">{{ ciudad }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="buscador__campo">
+        <svg class="buscador__icono" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        <label class="solo-lector" for="buscador-huespedes">Huéspedes</label>
+        <select class="buscador__select" id="buscador-huespedes" formControlName="huespedes">
+          <option [ngValue]="null">Huéspedes</option>
+          @for (n of opcionesHuespedes; track n) {
+            <option [ngValue]="n">{{ n === 1 ? '1 huésped' : n + ' huéspedes' }}</option>
+          }
+        </select>
+      </div>
+
+      <button type="submit" class="boton boton--cta buscador__boton">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+        Buscar
+      </button>
+    </form>
+  </div>
+
+  <svg class="portada__onda" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 44C200 14 420 62 720 40S1180 8 1440 40V80H0Z" />
+  </svg>
+</section>
