@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Accommodation } from '../models/accommodation.model';
 import { SearchFilters, SortOrder } from '../models/search-filters.model';
 import { AccommodationRepository } from '../repositories/accommodation.repository';
+import { calcularCalificacion } from '../utils/rating';
+import { ReviewService } from './review.service';
 
 /** Funciones puras: no dependen de Angular y son fáciles de probar. */
 export const filtrarAlojamientos = (
@@ -33,12 +35,23 @@ export const ordenarAlojamientos = (
 
 @Injectable({ providedIn: 'root' })
 export class AccommodationService {
-  constructor(private readonly repository: AccommodationRepository) {}
+  constructor(
+    private readonly repository: AccommodationRepository,
+    private readonly reviews: ReviewService,
+  ) {}
 
   /** Única puerta de entrada: aquí se descartan los alojamientos inactivos. */
   async getActive(): Promise<Accommodation[]> {
     const datos = await this.repository.getData();
-    return datos.alojamientos.filter((a) => a.activo);
+    const nuevas = this.reviews.nuevas();
+    return datos.alojamientos
+      .filter((a) => a.activo)
+      .map((a) => {
+        const anteriores = datos.resenas.filter((r) => r.alojamientoId === a.id).length;
+        const calificaciones = nuevas.filter((r) => r.alojamientoId === a.id).map((r) => r.calificacion);
+        // Copia con la calificación al día: las reseñas nuevas la mueven.
+        return { ...a, calificacion: calcularCalificacion(a.calificacion, anteriores, calificaciones) };
+      });
   }
 
   /** Devuelve undefined si el id no existe o el alojamiento está inactivo. */
