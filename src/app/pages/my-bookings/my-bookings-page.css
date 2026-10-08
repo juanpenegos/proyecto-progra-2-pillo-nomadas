@@ -1,6 +1,12 @@
-/* Fondo suave que continúa la onda del encabezado verde */
+/* La página llena el alto disponible; el fondo suave continúa la onda del encabezado verde */
+:host {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
 .reservas {
-  min-height: 24rem;
+  flex: 1;
   padding-block: var(--space-5) var(--space-7);
   background-color: var(--green-50);
 }
