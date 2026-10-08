@@ -101,13 +101,17 @@ describe('HomePage', () => {
     expect(navegar).toHaveBeenCalledWith(['/explorar'], { queryParams: { ciudad: 'Bogotá', huespedes: 3 } });
   });
 
-  it('el buscador sin criterios navega a Explorar sin parámetros', async () => {
+  it('el buscador no navega si no se llenaron el destino y los huéspedes, y lo avisa', async () => {
     await montar();
-    const { html } = await abrir();
+    const { fixture, html } = await abrir();
     const router = TestBed.inject(Router);
     const navegar = vi.spyOn(router, 'navigate').mockResolvedValue(true);
 
     html.querySelector<HTMLButtonElement>('.buscador__boton')?.click();
-    expect(navegar).toHaveBeenCalledWith(['/explorar'], { queryParams: {} });
+    await fixture.whenStable();
+    fixture.detectChanges();
+
+    expect(navegar).not.toHaveBeenCalled();
+    expect(html.querySelector('.buscador__error')?.textContent).toContain('Elige a dónde vas y cuántos huéspedes');
   });
 });
