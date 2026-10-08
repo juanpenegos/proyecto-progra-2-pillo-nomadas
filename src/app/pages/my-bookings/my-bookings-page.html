@@ -1,0 +1,20 @@
+<app-page-banner titulo="Mis reservas" [subtitulo]="resumen()">
+  <a class="boton boton--cta" routerLink="/explorar">+ Nueva reserva</a>
+</app-page-banner>
+
+<section class="reservas">
+  @if (reservas().length > 0) {
+    <ul class="reservas__lista contenedor">
+      @for (reserva of reservas(); track reserva.id) {
+        <li><app-booking-card [reserva]="reserva" /></li>
+      }
+    </ul>
+  } @else {
+    <app-empty-state
+      titulo="No tienes reservas aún."
+      mensaje="Explora nuestros alojamientos, genera una cotización y haz tu primera reserva con Pillo Nómadas."
+      textoBoton="Explorar alojamientos"
+      (accion)="irAExplorar()"
+    />
+  }
+</section>
