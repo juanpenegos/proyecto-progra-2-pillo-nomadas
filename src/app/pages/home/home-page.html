@@ -1,0 +1,78 @@
+<app-home-hero [ciudades]="ciudades()" [opcionesHuespedes]="opcionesHuespedes()" (buscar)="buscar($event)" />
+
+@switch (estado()) {
+  @case ('cargando') {
+    <app-loading-indicator texto="Cargando alojamientos…" />
+  }
+  @case ('error') {
+    <app-error-state
+      mensaje="No pudimos traer los alojamientos. Revisa tu conexión e inténtalo de nuevo."
+      (reintentar)="cargar()"
+    />
+  }
+  @case ('listo') {
+    <section class="cifras" aria-label="Pillo Nómadas en cifras">
+      <dl class="cifras__lista contenedor">
+        <div class="cifras__item">
+          <dt class="cifras__nombre">Alojamientos activos</dt>
+          <dd class="cifras__valor">{{ cifras().alojamientosActivos }}</dd>
+        </div>
+        <div class="cifras__item">
+          <dt class="cifras__nombre">Ciudades disponibles</dt>
+          <dd class="cifras__valor">{{ cifras().ciudades }}</dd>
+        </div>
+        <div class="cifras__item">
+          <dt class="cifras__nombre">Reseñas publicadas</dt>
+          <dd class="cifras__valor">{{ cifras().resenas }}</dd>
+        </div>
+        <div class="cifras__item">
+          <dt class="cifras__nombre">Calificación promedio</dt>
+          <dd class="cifras__valor">{{ cifras().calificacionPromedio }}★</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="seccion contenedor" aria-labelledby="titulo-destinos">
+      <h2 id="titulo-destinos">Explora por destino</h2>
+      <p class="seccion__subtitulo">Elige la ciudad de tu próxima escapada</p>
+
+      <ul class="destinos">
+        @for (destino of destinos(); track destino.ciudad) {
+          <li>
+            <a class="destino" routerLink="/explorar" [queryParams]="{ ciudad: destino.ciudad }">
+              <span class="destino__icono">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </span>
+              <span class="destino__nombre">{{ destino.ciudad }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </section>
+
+    <section class="destacados" aria-labelledby="titulo-destacados">
+      <div class="contenedor">
+        <div class="destacados__encabezado">
+          <div>
+            <h2 id="titulo-destacados">Alojamientos destacados</h2>
+            <p class="seccion__subtitulo seccion__subtitulo--compacto">Seleccionados por nuestra comunidad de nómadas</p>
+          </div>
+          <a class="destacados__ver-todos" routerLink="/explorar">Ver todos →</a>
+        </div>
+
+        <ul class="destacados__lista">
+          @for (alojamiento of destacados(); track alojamiento.id) {
+            <li>
+              <app-accommodation-card [alojamiento]="alojamiento" />
+            </li>
+          }
+        </ul>
+      </div>
+    </section>
+  }
+}
+
+<app-host-banner />
