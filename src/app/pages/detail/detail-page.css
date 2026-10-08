@@ -1,0 +1,159 @@
+.detalle {
+  display: grid;
+  gap: var(--space-3);
+  padding-block: var(--space-4) var(--space-7);
+}
+
+/* ===== Migas de pan ===== */
+.migas__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-size: var(--text-a);
+  color: var(--green-600);
+}
+
+.migas__item + .migas__item::before {
+  content: '/';
+  margin-right: var(--space-2);
+  color: var(--green-400);
+}
+
+.migas__item[aria-current='page'] {
+  font-weight: 600;
+  color: var(--green-900);
+}
+
+/* ===== Encabezado ===== */
+.detalle__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  font-size: var(--text-a);
+  color: var(--green-600);
+}
+
+.detalle__lugar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.detalle__tipo {
+  padding: 2px var(--space-3);
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--green-700);
+  background-color: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-full);
+}
+
+/* ===== Cuerpo: en móvil todo en una columna; la tarjeta queda justo después de los datos ===== */
+.detalle__cuerpo {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
+
+.datos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.datos__item {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-a);
+  font-weight: 500;
+  background-color: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-lg);
+}
+
+.detalle__error-reserva {
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--error);
+}
+
+.detalle__error-reserva:empty {
+  display: none;
+}
+
+/* ===== Secciones ===== */
+.seccion {
+  display: grid;
+  gap: var(--space-3);
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--green-100);
+}
+
+.seccion h2 {
+  font-size: var(--text-h4);
+}
+
+.seccion__ciudad {
+  font-weight: 600;
+}
+
+.seccion__detalle {
+  margin-top: calc(var(--space-2) * -1);
+  font-size: var(--text-a);
+  color: var(--green-400);
+}
+
+.puntaje {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: fit-content;
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-lg);
+}
+
+.puntaje__valor {
+  font-size: var(--text-h5);
+}
+
+.puntaje__maximo {
+  color: var(--green-400);
+}
+
+.sin-resenas__titulo {
+  font-weight: 700;
+}
+
+.resenas {
+  display: grid;
+  gap: var(--space-3);
+}
+
+/* ===== Escritorio: texto a la izquierda y tarjeta fija a la derecha ===== */
+@media (min-width: 64rem) {
+  .detalle__cuerpo {
+    grid-template-columns: minmax(0, 1fr) 22rem;
+    grid-template-areas:
+      'datos cotizacion'
+      'secciones cotizacion';
+    align-items: start;
+  }
+
+  .datos {
+    grid-area: datos;
+  }
+
+  .detalle__secciones {
+    grid-area: secciones;
+  }
+
+  .detalle__cotizacion {
+    grid-area: cotizacion;
+    position: sticky;
+    top: var(--space-3);
+  }
+}

@@ -1,0 +1,120 @@
+@switch (estado()) {
+  @case ('cargando') {
+    <app-loading-indicator texto="Cargando alojamiento…" />
+  }
+  @case ('error') {
+    <app-error-state
+      mensaje="No pudimos traer la información del alojamiento. Revisa tu conexión e inténtalo de nuevo."
+      (reintentar)="cargar()"
+    />
+  }
+  @case ('noEncontrado') {
+    <app-not-found-page />
+  }
+  @case ('listo') {
+    @if (alojamiento(); as a) {
+      <article class="detalle contenedor">
+        <nav class="migas" aria-label="Migas de pan">
+          <ol class="migas__lista">
+            <li class="migas__item"><a routerLink="/">Inicio</a></li>
+            <li class="migas__item"><a routerLink="/explorar">Alojamientos</a></li>
+            <li class="migas__item" aria-current="page">{{ a.nombre }}</li>
+          </ol>
+        </nav>
+
+        <header class="detalle__encabezado">
+          <h1>{{ a.nombre }}</h1>
+          <p class="detalle__meta">
+            <app-star-rating [valor]="a.calificacion" [tamano]="14" />
+            <strong>{{ a.calificacion }}</strong>
+            <span class="detalle__lugar">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              {{ a.ubicacion }}
+            </span>
+            <span class="detalle__tipo">{{ a.tipo }}</span>
+          </p>
+        </header>
+
+        <app-property-gallery [imagenes]="a.imagenes" [nombre]="a.nombre" />
+
+        <div class="detalle__cuerpo">
+          <ul class="datos" aria-label="Resumen del alojamiento">
+            <li class="datos__item">{{ a.capacidad }} huéspedes</li>
+            <li class="datos__item">{{ a.habitaciones }} {{ a.habitaciones === 1 ? 'habitación' : 'habitaciones' }}</li>
+            <li class="datos__item">{{ a.camas }} {{ a.camas === 1 ? 'cama' : 'camas' }}</li>
+            <li class="datos__item">{{ a.banos }} {{ a.banos === 1 ? 'baño' : 'baños' }}</li>
+          </ul>
+
+          <aside class="detalle__cotizacion">
+            <app-quote-card
+              [alojamiento]="a"
+              [cotizacion]="cotizacion()"
+              [errores]="errores()"
+              [reservando]="contactoAbierto()"
+              (calcular)="calcular($event)"
+              (cambio)="invalidarCotizacion()"
+              (reservar)="abrirContacto()"
+            >
+              @if (contactoAbierto()) {
+                <app-contact-form (confirmar)="confirmar($event)" (cancelar)="cerrarContacto()" />
+                <p class="detalle__error-reserva" role="alert">{{ errorReserva() }}</p>
+              }
+            </app-quote-card>
+          </aside>
+
+          <div class="detalle__secciones">
+            <section class="seccion" aria-labelledby="titulo-ubicacion">
+              <h2 id="titulo-ubicacion">Ubicación</h2>
+              <p class="seccion__ciudad">{{ a.ciudad }}</p>
+              <p class="seccion__detalle">{{ a.ubicacion }}</p>
+              <app-location-map [ubicacion]="a.ubicacion" [ciudad]="a.ciudad" />
+            </section>
+
+            <section class="seccion" aria-labelledby="titulo-descripcion">
+              <h2 id="titulo-descripcion">Sobre este espacio</h2>
+              <p>{{ a.descripcion }}</p>
+            </section>
+
+            <section class="seccion" aria-labelledby="titulo-servicios">
+              <h2 id="titulo-servicios">Servicios disponibles</h2>
+              <app-info-list [elementos]="a.servicios" tipo="check" etiqueta="Servicios disponibles" />
+            </section>
+
+            <section class="seccion" aria-labelledby="titulo-reglas">
+              <h2 id="titulo-reglas">Reglas básicas</h2>
+              <app-info-list [elementos]="a.reglas" tipo="alerta" etiqueta="Reglas básicas" />
+            </section>
+
+            <section class="seccion" aria-labelledby="titulo-calificacion">
+              <h2 id="titulo-calificacion">Calificación</h2>
+              @if (resenas().length > 0) {
+                <p class="puntaje">
+                  <app-star-rating [valor]="a.calificacion" [tamano]="16" />
+                  <strong class="puntaje__valor">{{ a.calificacion.toFixed(1) }}</strong>
+                  <span class="puntaje__maximo">/ 5.0</span>
+                </p>
+              } @else {
+                <p class="sin-resenas__titulo">Aún no hay calificaciones</p>
+                <p>Este alojamiento aún no tiene reseñas. ¡Sé el primero en compartir tu experiencia!</p>
+              }
+            </section>
+
+            @if (resenas().length > 0) {
+              <section class="seccion" aria-labelledby="titulo-resenas">
+                <h2 id="titulo-resenas">Reseñas de huéspedes</h2>
+                <ul class="resenas">
+                  @for (resena of resenas(); track resena.id) {
+                    <li><app-review-card [resena]="resena" /></li>
+                  }
+                </ul>
+              </section>
+            }
+          </div>
+        </div>
+      </article>
+    }
+  }
+}
