@@ -1,0 +1,228 @@
+{
+  "alojamientos": [
+    {
+      "id": 1,
+      "nombre": "Loft moderno en Chapinero",
+      "descripcion": "Loft moderno ubicado cerca de restaurantes, cafés y zonas comerciales de Bogotá.",
+      "ciudad": "Bogotá",
+      "ubicacion": "Chapinero, Bogotá",
+      "tipo": "Apartamento",
+      "capacidad": 2,
+      "habitaciones": 1,
+      "camas": 1,
+      "banos": 1,
+      "precioNoche": 180000,
+      "tarifaLimpieza": 45000,
+      "calificacion": 4.8,
+      "activo": true,
+      "imagenPrincipal": "assets/images/loft-bogota.jpg",
+      "imagenes": [
+        "assets/images/loft-bogota.jpg",
+        "assets/images/loft-bogota-2.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Televisión",
+        "Lavadora"
+      ],
+      "reglas": [
+        "No fumar",
+        "No se permiten fiestas"
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Apartamento frente al mar",
+      "descripcion": "Apartamento con vista al mar ubicado en una zona turística de Cartagena.",
+      "ciudad": "Cartagena",
+      "ubicacion": "Bocagrande, Cartagena",
+      "tipo": "Apartamento",
+      "capacidad": 5,
+      "habitaciones": 2,
+      "camas": 3,
+      "banos": 2,
+      "precioNoche": 420000,
+      "tarifaLimpieza": 70000,
+      "calificacion": 4.9,
+      "activo": true,
+      "imagenPrincipal": "assets/images/cartagena.jpg",
+      "imagenes": [
+        "assets/images/cartagena.jpg",
+        "assets/images/cartagena-2.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Piscina",
+        "Aire acondicionado",
+        "Cocina",
+        "Parqueadero"
+      ],
+      "reglas": [
+        "No fumar",
+        "No mascotas"
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Cabaña en Guatapé",
+      "descripcion": "Cabaña rodeada de naturaleza con vista al embalse de Guatapé.",
+      "ciudad": "Guatapé",
+      "ubicacion": "Guatapé, Antioquia",
+      "tipo": "Cabaña",
+      "capacidad": 6,
+      "habitaciones": 3,
+      "camas": 4,
+      "banos": 2,
+      "precioNoche": 350000,
+      "tarifaLimpieza": 60000,
+      "calificacion": 4.7,
+      "activo": true,
+      "imagenPrincipal": "assets/images/guatape.jpg",
+      "imagenes": [
+        "assets/images/guatape.jpg",
+        "assets/images/guatape-2.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Parqueadero",
+        "BBQ"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Casa colonial en Villa de Leyva",
+      "descripcion": "Casa de estilo colonial localizada cerca de la plaza principal.",
+      "ciudad": "Villa de Leyva",
+      "ubicacion": "Centro histórico",
+      "tipo": "Casa",
+      "capacidad": 8,
+      "habitaciones": 4,
+      "camas": 5,
+      "banos": 3,
+      "precioNoche": 520000,
+      "tarifaLimpieza": 90000,
+      "calificacion": 4.6,
+      "activo": true,
+      "imagenPrincipal": "assets/images/villa-leyva.jpg",
+      "imagenes": [
+        "assets/images/villa-leyva.jpg",
+        "assets/images/villa-leyva-2.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Chimenea",
+        "Parqueadero"
+      ],
+      "reglas": [
+        "No fiestas",
+        "Máximo 8 huéspedes"
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Apartamento ejecutivo Medellín",
+      "descripcion": "Apartamento moderno cercano a zonas comerciales y empresariales.",
+      "ciudad": "Medellín",
+      "ubicacion": "El Poblado, Medellín",
+      "tipo": "Apartamento",
+      "capacidad": 3,
+      "habitaciones": 1,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 230000,
+      "tarifaLimpieza": 50000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/medellin.jpg",
+      "imagenes": [
+        "assets/images/medellin.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Gimnasio",
+        "Parqueadero"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Casa campestre",
+      "descripcion": "Casa campestre actualmente fuera de servicio.",
+      "ciudad": "Armenia",
+      "ubicacion": "Zona rural",
+      "tipo": "Casa",
+      "capacidad": 10,
+      "habitaciones": 5,
+      "camas": 7,
+      "banos": 4,
+      "precioNoche": 650000,
+      "tarifaLimpieza": 120000,
+      "calificacion": 4.4,
+      "activo": false,
+      "imagenPrincipal": "assets/images/armenia.jpg",
+      "imagenes": [
+        "assets/images/armenia.jpg"
+      ],
+      "servicios": [
+        "Piscina",
+        "Parqueadero",
+        "BBQ"
+      ],
+      "reglas": [
+        "No fiestas"
+      ]
+    }
+  ],
+  "resenas": [
+    {
+      "id": 1,
+      "alojamientoId": 1,
+      "usuario": "Laura Gómez",
+      "calificacion": 5,
+      "comentario": "Excelente ubicación y apartamento muy cómodo.",
+      "fecha": "2026-09-23"
+    },
+    {
+      "id": 2,
+      "alojamientoId": 1,
+      "usuario": "Carlos Ruiz",
+      "calificacion": 4,
+      "comentario": "Muy buena experiencia.",
+      "fecha": "2026-09-02"
+    },
+    {
+      "id": 3,
+      "alojamientoId": 2,
+      "usuario": "Andrea López",
+      "calificacion": 5,
+      "comentario": "La vista es excelente y la ubicación muy conveniente.",
+      "fecha": "2026-09-16"
+    },
+    {
+      "id": 4,
+      "alojamientoId": 3,
+      "usuario": "Miguel Torres",
+      "calificacion": 5,
+      "comentario": "Excelente lugar para descansar.",
+      "fecha": "2026-09-30"
+    },
+    {
+      "id": 5,
+      "alojamientoId": 4,
+      "usuario": "Natalia Pérez",
+      "calificacion": 4,
+      "comentario": "La casa es amplia y está muy bien ubicada.",
+      "fecha": "2026-08-26"
+    }
+  ]
+}
