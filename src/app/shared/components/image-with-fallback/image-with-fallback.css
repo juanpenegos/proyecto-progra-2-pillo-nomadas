@@ -10,3 +10,8 @@
   object-fit: cover;
   background-color: var(--green-100);
 }
+
+/* El placeholder se ve completo (no recortado) dentro de cualquier recuadro */
+.imagen--respaldo {
+  object-fit: contain;
+}

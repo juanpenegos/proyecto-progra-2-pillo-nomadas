@@ -1,0 +1,70 @@
+.contacto {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.contacto__titulo {
+  font-size: var(--text-h5);
+}
+
+.contacto__campo {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.contacto__etiqueta {
+  text-transform: uppercase;
+  color: var(--green-700);
+}
+
+.contacto__entrada {
+  min-height: var(--touch-target);
+  padding: var(--space-2) var(--space-3);
+  color: var(--green-900);
+  background-color: var(--white);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition-fast);
+}
+
+.contacto__entrada:hover,
+.contacto__entrada:focus-visible {
+  border-color: var(--green-700);
+}
+
+.contacto__entrada::placeholder {
+  color: var(--placeholder);
+}
+
+.contacto__entrada[aria-invalid='true'] {
+  border-color: var(--error-border);
+}
+
+.contacto__error {
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--error);
+}
+
+.contacto__error:empty {
+  display: none;
+}
+
+.contacto__confirmar {
+  width: 100%;
+}
+
+.contacto__cancelar {
+  min-height: var(--touch-target);
+  padding: 0;
+  font-size: var(--text-a);
+  font-weight: 500;
+  color: var(--green-700);
+  background: none;
+  border: none;
+  text-decoration: underline;
+}
+
+.contacto__cancelar:hover {
+  color: var(--green-900);
+}

@@ -1,0 +1,74 @@
+<section class="cotizar" aria-labelledby="cotizar-titulo">
+  <h2 class="solo-lector" id="cotizar-titulo">Cotizar tu estadía</h2>
+
+  <div class="cotizar__cabecera">
+    <img src="assets/logos/logo-verde.png" alt="" width="24" height="29" />
+    <p class="cotizar__precio">
+      <strong>{{ precio }}</strong>
+      <span class="cotizar__noche">por noche</span>
+    </p>
+    <span class="cotizar__calificacion">
+      <app-star-rating [valor]="alojamiento.calificacion" [tamano]="10" />
+      {{ alojamiento.calificacion }}
+    </span>
+  </div>
+
+  <form class="cotizar__formulario" [formGroup]="formulario" (ngSubmit)="enviar()" (change)="alCambiar()" novalidate>
+    <div class="cotizar__fechas">
+      <div class="cotizar__campo">
+        <label for="cotizar-llegada">Llegada</label>
+        <input
+          class="cotizar__fecha"
+          id="cotizar-llegada"
+          type="date"
+          [min]="hoy"
+          formControlName="llegada"
+          [attr.aria-invalid]="!!errores.llegada"
+          aria-describedby="cotizar-llegada-error"
+        />
+      </div>
+      <div class="cotizar__campo">
+        <label for="cotizar-salida">Salida</label>
+        <input
+          class="cotizar__fecha"
+          id="cotizar-salida"
+          type="date"
+          [min]="formulario.controls.llegada.value || hoy"
+          formControlName="salida"
+          [attr.aria-invalid]="!!errores.salida"
+          aria-describedby="cotizar-salida-error"
+        />
+      </div>
+    </div>
+
+    <p class="cotizar__error" id="cotizar-llegada-error" role="alert">{{ errores.llegada }}</p>
+    <p class="cotizar__error" id="cotizar-salida-error" role="alert">{{ errores.salida }}</p>
+
+    <div class="cotizar__huespedes">
+      <span class="cotizar__etiqueta" id="cotizar-huespedes-etiqueta">Huéspedes (máx. {{ alojamiento.capacidad }})</span>
+      <div class="cotizar__contador" role="group" aria-labelledby="cotizar-huespedes-etiqueta">
+        <button type="button" class="cotizar__paso" aria-label="Quitar un huésped" [disabled]="!puedeQuitar" (click)="cambiarHuespedes(-1)">−</button>
+        <output class="cotizar__cantidad" aria-live="polite">{{ huespedes }}</output>
+        <button type="button" class="cotizar__paso" aria-label="Agregar un huésped" [disabled]="!puedeAgregar" (click)="cambiarHuespedes(1)">+</button>
+      </div>
+    </div>
+    <p class="cotizar__error" role="alert">{{ errores.huespedes }}</p>
+
+    @if (!cotizacion) {
+      <button type="submit" class="boton boton--primario cotizar__boton">Calcular cotización</button>
+      <p class="cotizar__error" role="alert">{{ errores.precio }}</p>
+      <p class="cotizar__ayuda">Genera una cotización válida para poder reservar</p>
+    }
+  </form>
+
+  <div aria-live="polite">
+    @if (cotizacion) {
+      <app-quote-summary [cotizacion]="cotizacion" />
+      @if (!reservando) {
+        <button type="button" class="boton boton--cta cotizar__boton" (click)="reservar.emit()">Reservar</button>
+      }
+    }
+  </div>
+
+  <ng-content />
+</section>

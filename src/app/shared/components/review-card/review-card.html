@@ -1,0 +1,13 @@
+<article class="resena">
+  <div class="resena__cabecera">
+    <span class="resena__avatar" aria-hidden="true">{{ iniciales }}</span>
+    <div>
+      <h4 class="resena__usuario">{{ resena.usuario }}</h4>
+      <app-star-rating [valor]="resena.calificacion" [tamano]="14" />
+      @if (cuando) {
+        <p class="resena__fecha">{{ cuando }}</p>
+      }
+    </div>
+  </div>
+  <p class="resena__comentario">{{ resena.comentario }}</p>
+</article>

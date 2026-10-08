@@ -1,0 +1,13 @@
+<div class="mapa">
+  @if (enLinea) {
+    <iframe
+      class="mapa__marco"
+      [src]="url"
+      [title]="'Mapa de ' + ubicacion"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  } @else {
+    <p class="mapa__mensaje">No pudimos cargar el mapa. Revisa tu conexión a internet e inténtalo de nuevo.</p>
+  }
+</div>

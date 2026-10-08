@@ -1,0 +1,43 @@
+.resena {
+  padding: var(--space-3);
+  background-color: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-lg);
+}
+
+.resena__cabecera {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.resena__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--green-600);
+  background-color: var(--green-100);
+}
+
+.resena__usuario {
+  font-family: var(--font-body);
+  font-size: var(--text-a);
+  font-weight: 700;
+}
+
+.resena__fecha {
+  font-size: var(--text-label);
+  color: var(--green-400);
+}
+
+.resena__comentario {
+  margin-top: var(--space-3);
+  font-size: var(--text-a);
+  font-weight: 400;
+}

@@ -1,1 +1,8 @@
-<img class="imagen" [src]="fallo ? respaldo : src" [alt]="alt" loading="lazy" (error)="alFallar()" />
+<img
+  class="imagen"
+  [class.imagen--respaldo]="fallo || !src"
+  [src]="fallo || !src ? respaldo : src"
+  [alt]="alt"
+  loading="lazy"
+  (error)="alFallar()"
+/>

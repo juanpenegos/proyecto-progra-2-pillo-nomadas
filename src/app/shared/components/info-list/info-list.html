@@ -1,0 +1,19 @@
+<ul class="lista" [class.lista--dos-columnas]="tipo === 'check'" [attr.aria-label]="etiqueta || null">
+  @for (elemento of elementos; track elemento) {
+    <li class="lista__elemento">
+      <span class="lista__icono" [class.lista__icono--alerta]="tipo === 'alerta'" aria-hidden="true">
+        @if (tipo === 'check') {
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        } @else {
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 8v4M12 16h.01" />
+          </svg>
+        }
+      </span>
+      {{ elemento }}
+    </li>
+  }
+</ul>
