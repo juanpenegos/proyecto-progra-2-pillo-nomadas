@@ -1,0 +1,39 @@
+.calificar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.calificar__estrella {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast);
+}
+
+.calificar__estrella:hover {
+  background-color: var(--orange-10);
+}
+
+.calificar__icono {
+  fill: none;
+  color: var(--orange-500);
+}
+
+.calificar__icono--llena {
+  fill: currentColor;
+}
+
+.calificar__texto {
+  margin-left: var(--space-2);
+  font-size: var(--text-a);
+  font-weight: 500;
+  color: var(--green-600);
+}

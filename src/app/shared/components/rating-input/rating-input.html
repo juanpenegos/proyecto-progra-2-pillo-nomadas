@@ -1,0 +1,27 @@
+<div class="calificar" role="radiogroup" aria-label="Tu calificación">
+  @for (n of posiciones; track n) {
+    <button
+      type="button"
+      class="calificar__estrella"
+      role="radio"
+      [attr.aria-checked]="valor === n"
+      [attr.aria-label]="n === 1 ? '1 estrella' : n + ' estrellas'"
+      (click)="elegir(n)"
+    >
+      <svg
+        class="calificar__icono"
+        [class.calificar__icono--llena]="n <= valor"
+        viewBox="0 0 24 24"
+        width="28"
+        height="28"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" />
+      </svg>
+    </button>
+  }
+  <span class="calificar__texto" aria-live="polite">{{ texto }}</span>
+</div>
