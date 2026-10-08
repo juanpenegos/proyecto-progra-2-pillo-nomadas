@@ -1,0 +1,77 @@
+@switch (estado()) {
+  @case ('cargando') {
+    <h1 class="solo-lector">Galería de fotos</h1>
+    <app-loading-indicator texto="Cargando galería…" />
+  }
+  @case ('error') {
+    <h1 class="solo-lector">Galería de fotos</h1>
+    <app-error-state
+      mensaje="No pudimos traer las fotos. Revisa tu conexión e inténtalo de nuevo."
+      (reintentar)="cargar()"
+    />
+  }
+  @case ('noEncontrado') {
+    <app-not-found-page />
+  }
+  @case ('listo') {
+    @if (alojamiento(); as a) {
+      <article class="galeria contenedor">
+        <a class="galeria__volver" [routerLink]="['/alojamientos', a.id]">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m12 19-7-7 7-7M19 12H5" />
+          </svg>
+          Volver
+        </a>
+
+        <nav class="galeria__migas" aria-label="Migas de pan">
+          <a routerLink="/explorar">Alojamientos</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Galería completa</span>
+        </nav>
+
+        <header>
+          <h1>{{ a.nombre }}</h1>
+          <p class="galeria__datos">
+            <strong>{{ fotos().length === 1 ? '1 fotografía' : fotos().length + ' fotografías' }}</strong>
+            · {{ a.ubicacion }}
+          </p>
+        </header>
+
+        <div class="galeria__pestanas" role="group" aria-label="Filtrar fotos por categoría">
+          @for (nombre of categorias(); track nombre) {
+            <button
+              type="button"
+              class="galeria__pestana"
+              [class.galeria__pestana--activa]="nombre === categoria()"
+              [attr.aria-pressed]="nombre === categoria()"
+              (click)="elegir(nombre)"
+            >
+              {{ nombre }}
+            </button>
+          }
+        </div>
+
+        <h2 class="solo-lector">Fotos de {{ a.nombre }}</h2>
+        <ul class="galeria__lista">
+          @for (foto of visibles(); track foto.src) {
+            <li class="galeria__foto">
+              <figure class="galeria__figura">
+                <app-image-with-fallback [src]="foto.src" [alt]="foto.titulo + ' de ' + a.nombre" />
+                <figcaption class="galeria__titulo">{{ foto.titulo }}</figcaption>
+              </figure>
+            </li>
+          }
+        </ul>
+
+        <p class="galeria__fin">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <path d="m9 11 3 3L22 4" />
+          </svg>
+          <strong>Has visto todas las fotos</strong>
+          <span>{{ a.nombre }} · {{ a.ubicacion }}</span>
+        </p>
+      </article>
+    }
+  }
+}

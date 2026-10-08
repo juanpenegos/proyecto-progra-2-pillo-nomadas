@@ -1,0 +1,103 @@
+.galeria {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+  padding-block: var(--space-4) var(--space-7);
+}
+
+.galeria__volver {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: fit-content;
+  min-height: var(--touch-target);
+  font-weight: 600;
+}
+
+.galeria__migas {
+  display: flex;
+  gap: var(--space-2);
+  font-size: var(--text-a);
+  color: var(--green-600);
+}
+
+.galeria__migas [aria-current='page'] {
+  font-weight: 600;
+  color: var(--green-700);
+}
+
+.galeria__datos {
+  margin-top: var(--space-2);
+  font-size: var(--text-a);
+  color: var(--green-600);
+}
+
+.galeria__pestanas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.galeria__pestana {
+  min-height: var(--touch-target);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-a);
+  font-weight: 600;
+  color: var(--green-700);
+  background-color: var(--white);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast);
+}
+
+.galeria__pestana:hover {
+  background-color: var(--green-50);
+}
+
+.galeria__pestana--activa,
+.galeria__pestana--activa:hover {
+  color: var(--white);
+  background-color: var(--green-700);
+  border-color: var(--green-700);
+}
+
+.galeria__lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  gap: var(--space-3);
+}
+
+.galeria__figura {
+  position: relative;
+  height: 15rem;
+  margin: 0;
+  overflow: hidden;
+  background-color: var(--green-50);
+  border-radius: var(--radius-xl);
+}
+
+.galeria__titulo {
+  position: absolute;
+  bottom: var(--space-2);
+  left: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--white);
+  background-color: var(--green-900-90);
+  border-radius: var(--radius-full);
+}
+
+.galeria__fin {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-1);
+  margin: var(--space-4) auto 0;
+  font-size: var(--text-a);
+  text-align: center;
+  color: var(--green-600);
+}
+
+.galeria__fin svg {
+  color: var(--green-700);
+}
