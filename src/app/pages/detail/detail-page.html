@@ -1,8 +1,10 @@
 @switch (estado()) {
   @case ('cargando') {
+    <h1 class="solo-lector">Alojamiento</h1>
     <app-loading-indicator texto="Cargando alojamiento…" />
   }
   @case ('error') {
+    <h1 class="solo-lector">Alojamiento</h1>
     <app-error-state
       mensaje="No pudimos traer la información del alojamiento. Revisa tu conexión e inténtalo de nuevo."
       (reintentar)="cargar()"
