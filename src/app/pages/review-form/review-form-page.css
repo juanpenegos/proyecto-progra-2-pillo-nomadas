@@ -1,0 +1,85 @@
+.resena {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+  padding-block: var(--space-4) var(--space-7);
+}
+
+.resena__migas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-size: var(--text-a);
+  color: var(--green-600);
+}
+
+.resena__migas [aria-current='page'] {
+  font-weight: 600;
+  color: var(--green-900);
+}
+
+.resena__intro {
+  margin-top: var(--space-2);
+  color: var(--green-600);
+}
+
+.resena__formulario {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background-color: var(--white);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.resena__campo {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.resena__etiqueta {
+  font-size: var(--text-a);
+  font-weight: 600;
+}
+
+.resena__comentario {
+  width: 100%;
+  min-height: 8rem;
+  padding: var(--space-3);
+  resize: vertical;
+  color: var(--green-900);
+  background-color: var(--white);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition-fast);
+}
+
+.resena__comentario:hover,
+.resena__comentario:focus-visible {
+  border-color: var(--green-700);
+}
+
+.resena__comentario::placeholder {
+  color: var(--placeholder);
+}
+
+.resena__comentario[aria-invalid='true'] {
+  border-color: var(--error-border);
+}
+
+.resena__error {
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--error);
+}
+
+.resena__error:empty {
+  display: none;
+}
+
+.resena__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
