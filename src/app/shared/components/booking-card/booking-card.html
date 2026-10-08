@@ -1,0 +1,58 @@
+<article class="reserva">
+  <div class="reserva__foto">
+    <app-image-with-fallback [src]="reserva.imagenPrincipal" [alt]="'Foto de ' + reserva.alojamientoNombre" />
+  </div>
+
+  <div class="reserva__cuerpo">
+    <div class="reserva__cabecera">
+      <div>
+        <p class="reserva__estado-fila">
+          <span class="reserva__estado">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            {{ reserva.estado }}
+          </span>
+          <span class="reserva__codigo">{{ reserva.id }}</span>
+        </p>
+        <h2 class="reserva__nombre">{{ reserva.alojamientoNombre }}</h2>
+        <p class="reserva__ciudad">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          {{ reserva.ciudad }}
+        </p>
+      </div>
+      <p class="reserva__total">
+        <strong>{{ pesos(reserva.total) }}</strong>
+        <span class="reserva__noches">{{ noches }}</span>
+      </p>
+    </div>
+
+    <dl class="reserva__datos">
+      <div>
+        <dt>Llegada</dt>
+        <dd>{{ fecha(reserva.llegada) }}</dd>
+      </div>
+      <div>
+        <dt>Salida</dt>
+        <dd>{{ fecha(reserva.salida) }}</dd>
+      </div>
+      <div>
+        <dt>Huéspedes</dt>
+        <dd>{{ personas }}</dd>
+      </div>
+      <div>
+        <dt>Huésped</dt>
+        <dd>{{ reserva.nombreHuesped }}</dd>
+      </div>
+    </dl>
+
+    <p class="reserva__desglose">
+      <span>Subtotal: {{ pesos(reserva.subtotal) }}</span>
+      <span>Limpieza: {{ pesos(reserva.tarifaLimpieza) }}</span>
+      <span>Servicio (10%): {{ pesos(reserva.tarifaServicio) }}</span>
+    </p>
+  </div>
+</article>

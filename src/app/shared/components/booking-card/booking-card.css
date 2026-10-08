@@ -1,0 +1,122 @@
+.reserva {
+  display: grid;
+  overflow: hidden;
+  background-color: var(--white);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.reserva__foto {
+  height: 11rem;
+  background-color: var(--green-50);
+}
+
+.reserva__cuerpo {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-3);
+}
+
+.reserva__cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--green-100);
+}
+
+.reserva__estado-fila {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.reserva__estado {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px var(--space-2);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--success);
+  background-color: var(--success-bg);
+  border-radius: var(--radius-full);
+}
+
+.reserva__codigo {
+  font-size: var(--text-label);
+  color: var(--green-400);
+}
+
+.reserva__nombre {
+  margin-top: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-p);
+  font-weight: 700;
+}
+
+.reserva__ciudad {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+  font-size: var(--text-a);
+  color: var(--green-600);
+}
+
+.reserva__total {
+  display: grid;
+  text-align: right;
+  font-size: var(--text-h5);
+}
+
+.reserva__noches {
+  font-size: var(--text-label);
+  color: var(--green-400);
+}
+
+.reserva__datos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  margin: 0;
+}
+
+.reserva__datos dt {
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--green-400);
+}
+
+.reserva__datos dd {
+  margin: 0;
+  font-size: var(--text-a);
+  font-weight: 500;
+}
+
+.reserva__desglose {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  max-width: none;
+  font-size: var(--text-label);
+  color: var(--green-400);
+}
+
+@media (min-width: 48rem) {
+  .reserva {
+    grid-template-columns: 11rem 1fr;
+  }
+
+  .reserva__foto {
+    height: auto;
+  }
+
+  .reserva__datos {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
