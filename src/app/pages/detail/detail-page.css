@@ -1,5 +1,6 @@
 .detalle {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-3);
   padding-block: var(--space-4) var(--space-7);
 }
@@ -54,6 +55,7 @@
 /* ===== Cuerpo: en móvil todo en una columna; la tarjeta queda justo después de los datos ===== */
 .detalle__cuerpo {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-4);
   margin-top: var(--space-3);
 }

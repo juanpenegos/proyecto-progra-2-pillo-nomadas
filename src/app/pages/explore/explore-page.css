@@ -1,3 +1,10 @@
+/* La página llena el alto disponible para que el fondo del estado vacío no termine a medias */
+:host {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
 .resultados {
   padding-block: var(--space-5) var(--space-7);
 }
@@ -15,7 +22,7 @@
 
 /* Fondo suave que continúa la onda del encabezado verde */
 .sin-resultados {
-  min-height: 24rem;
+  flex: 1;
   background-color: var(--green-50);
 }
 

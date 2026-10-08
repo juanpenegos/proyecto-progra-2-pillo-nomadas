@@ -10,9 +10,11 @@
 
 @switch (estado()) {
   @case ('cargando') {
+    <h1 class="solo-lector">Explorar alojamientos</h1>
     <app-loading-indicator texto="Buscando alojamientos…" />
   }
   @case ('error') {
+    <h1 class="solo-lector">Explorar alojamientos</h1>
     <app-error-state
       mensaje="No pudimos traer los alojamientos. Revisa tu conexión e inténtalo de nuevo."
       (reintentar)="cargar()"
@@ -22,6 +24,7 @@
     @if (resultados().length > 0) {
       <section class="resultados contenedor">
         <h1 class="resultados__titulo" aria-live="polite">{{ titulo() }}</h1>
+        <h2 class="solo-lector">Lista de alojamientos</h2>
         <ul class="resultados__lista">
           @for (alojamiento of resultados(); track alojamiento.id) {
             <li>

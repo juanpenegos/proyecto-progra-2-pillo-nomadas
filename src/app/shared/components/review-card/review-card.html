@@ -2,7 +2,7 @@
   <div class="resena__cabecera">
     <span class="resena__avatar" aria-hidden="true">{{ iniciales }}</span>
     <div>
-      <h4 class="resena__usuario">{{ resena.usuario }}</h4>
+      <h3 class="resena__usuario">{{ resena.usuario }}</h3>
       <app-star-rating [valor]="resena.calificacion" [tamano]="14" />
       @if (cuando) {
         <p class="resena__fecha">{{ cuando }}</p>

@@ -1,7 +1,13 @@
+:host {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
 .confirmacion {
   display: grid;
+  flex: 1;
   place-items: center;
-  min-height: 32rem;
   padding: var(--space-6) var(--space-3);
   background-color: var(--green-50);
 }
