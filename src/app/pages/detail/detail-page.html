@@ -40,7 +40,11 @@
           </p>
         </header>
 
-        <app-property-gallery [imagenes]="a.imagenes" [nombre]="a.nombre" />
+        <app-property-gallery
+          [imagenes]="a.imagenes"
+          [nombre]="a.nombre"
+          [rutaGaleria]="['/alojamientos', a.id, 'galeria']"
+        />
 
         <div class="detalle__cuerpo">
           <ul class="datos" aria-label="Resumen del alojamiento">
@@ -101,12 +105,14 @@
               } @else {
                 <p class="sin-resenas__titulo">Aún no hay calificaciones</p>
                 <p>Este alojamiento aún no tiene reseñas. ¡Sé el primero en compartir tu experiencia!</p>
+                <a class="boton boton--primario seccion__boton" [routerLink]="['/alojamientos', a.id, 'resena']">Escribir una reseña</a>
               }
             </section>
 
             @if (resenas().length > 0) {
-              <section class="seccion" aria-labelledby="titulo-resenas">
+              <section class="seccion" id="resenas" aria-labelledby="titulo-resenas">
                 <h2 id="titulo-resenas">Reseñas de huéspedes</h2>
+                <a class="boton boton--secundario seccion__boton" [routerLink]="['/alojamientos', a.id, 'resena']">Escribir una reseña</a>
                 <ul class="resenas">
                   @for (resena of resenas(); track resena.id) {
                     <li><app-review-card [resena]="resena" /></li>

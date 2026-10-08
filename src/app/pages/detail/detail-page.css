@@ -126,6 +126,10 @@
   color: var(--green-400);
 }
 
+.seccion__boton {
+  justify-self: start;
+}
+
 .sin-resenas__titulo {
   font-weight: 700;
 }
