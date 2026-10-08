@@ -1,0 +1,57 @@
+<a class="tarjeta" [routerLink]="['/alojamientos', alojamiento.id]">
+  <div class="tarjeta__foto">
+    <app-image-with-fallback
+      [src]="alojamiento.imagenPrincipal"
+      [alt]="'Foto de ' + alojamiento.nombre"
+    />
+    <span class="tarjeta__tipo">{{ alojamiento.tipo }}</span>
+    <span class="tarjeta__calificacion">
+      <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true">
+        <path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" />
+      </svg>
+      <span class="tarjeta__calificacion-valor">{{ alojamiento.calificacion }}</span>
+    </span>
+  </div>
+
+  <div class="tarjeta__cuerpo">
+    <h3 class="tarjeta__nombre">{{ alojamiento.nombre }}</h3>
+
+    <p class="tarjeta__ciudad">
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z" />
+        <circle cx="12" cy="10" r="3" />
+      </svg>
+      {{ alojamiento.ciudad }}
+    </p>
+
+    <p class="tarjeta__datos">
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8" />
+      </svg>
+      {{ alojamiento.capacidad }} huésp. · {{ alojamiento.habitaciones }} hab. · {{ banos }}
+    </p>
+
+    <ul class="tarjeta__servicios" aria-label="Servicios">
+      @for (servicio of serviciosVisibles; track servicio) {
+        <li class="tarjeta__servicio">{{ servicio }}</li>
+      }
+      @if (serviciosOcultos > 0) {
+        <li class="tarjeta__mas">+{{ serviciosOcultos }}</li>
+      }
+    </ul>
+
+    <div class="tarjeta__pie">
+      <p class="tarjeta__precio">
+        <strong>{{ precio }}</strong> <span class="tarjeta__noche">/ noche</span>
+      </p>
+      <p class="tarjeta__estrellas">
+        <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true">
+          <path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" />
+        </svg>
+        {{ alojamiento.calificacion }}
+      </p>
+    </div>
+  </div>
+</a>

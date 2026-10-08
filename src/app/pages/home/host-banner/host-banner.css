@@ -1,0 +1,80 @@
+.anfitriones {
+  padding-block: var(--space-6);
+}
+
+.anfitriones__tarjeta {
+  position: relative;
+  display: grid;
+  gap: var(--space-5);
+  align-items: center;
+  padding: var(--space-5) var(--space-4);
+  overflow: hidden;
+  color: var(--white);
+  background-color: var(--green-900);
+  border-radius: var(--radius-xl);
+}
+
+.anfitriones__tarjeta::before,
+.anfitriones__tarjeta::after {
+  content: '';
+  position: absolute;
+  border-radius: var(--radius-full);
+  background-color: var(--green-700-30);
+}
+
+.anfitriones__tarjeta::before {
+  top: -4rem;
+  right: -3rem;
+  width: 12rem;
+  height: 12rem;
+}
+
+.anfitriones__tarjeta::after {
+  bottom: -4rem;
+  left: 45%;
+  width: 8rem;
+  height: 8rem;
+}
+
+.anfitriones__texto {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.anfitriones__marca {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-a);
+  font-weight: 600;
+  color: var(--orange-500);
+}
+
+.anfitriones__descripcion {
+  color: var(--white-75);
+}
+
+.anfitriones__foto {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 16rem;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+}
+
+/* ===== Tablet: desde 768 px ===== */
+@media (min-width: 48rem) {
+  .anfitriones {
+    padding-block: var(--space-7);
+  }
+
+  .anfitriones__tarjeta {
+    grid-template-columns: 1fr auto;
+    padding: var(--space-6);
+  }
+}

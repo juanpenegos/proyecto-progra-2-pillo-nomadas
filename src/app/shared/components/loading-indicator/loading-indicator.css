@@ -1,0 +1,5 @@
+.cargando {
+  padding-block: var(--space-7);
+  text-align: center;
+  color: var(--green-400);
+}
