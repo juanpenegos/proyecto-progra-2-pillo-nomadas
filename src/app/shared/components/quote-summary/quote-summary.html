@@ -1,0 +1,26 @@
+<section class="resumen" aria-labelledby="resumen-titulo">
+  <h3 class="resumen__titulo" id="resumen-titulo">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+    Cotización generada
+  </h3>
+  <dl class="resumen__lista">
+    <div class="resumen__fila">
+      <dt>{{ pesos(cotizacion.precioNoche) }} × {{ nochesTexto }}</dt>
+      <dd>{{ pesos(cotizacion.subtotal) }}</dd>
+    </div>
+    <div class="resumen__fila">
+      <dt>Tarifa de limpieza</dt>
+      <dd>{{ pesos(cotizacion.tarifaLimpieza) }}</dd>
+    </div>
+    <div class="resumen__fila">
+      <dt>Tarifa de servicio (10%)</dt>
+      <dd>{{ pesos(cotizacion.tarifaServicio) }}</dd>
+    </div>
+    <div class="resumen__fila resumen__fila--total">
+      <dt>Total</dt>
+      <dd class="resumen__total">{{ pesos(cotizacion.total) }}</dd>
+    </div>
+  </dl>
+</section>
