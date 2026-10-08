@@ -1,0 +1,38 @@
+.resultados {
+  padding-block: var(--space-5) var(--space-7);
+}
+
+.resultados__titulo {
+  margin-bottom: var(--space-4);
+  font-size: var(--text-h4);
+}
+
+.resultados__lista {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+/* Fondo suave que continúa la onda del encabezado verde */
+.sin-resultados {
+  min-height: 24rem;
+  background-color: var(--green-50);
+}
+
+@media (min-width: 48rem) {
+  .resultados__lista {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .resultados__lista {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 80rem) {
+  .resultados__lista {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

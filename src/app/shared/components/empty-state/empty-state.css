@@ -1,0 +1,24 @@
+.vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 28rem;
+  margin-inline: auto;
+  padding: var(--space-6) var(--space-3);
+  text-align: center;
+}
+
+.vacio__logo {
+  width: auto;
+  height: 4.75rem;
+  opacity: 0.4;
+}
+
+.vacio__titulo {
+  font-size: var(--text-h5);
+}
+
+.vacio__mensaje {
+  color: var(--green-400);
+}

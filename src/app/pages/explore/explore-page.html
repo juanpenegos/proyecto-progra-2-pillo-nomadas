@@ -1,0 +1,47 @@
+<app-filter-bar
+  [filtros]="criterios().filtros"
+  [orden]="criterios().orden"
+  [ciudades]="ciudades()"
+  [tipos]="tipos()"
+  [opcionesHuespedes]="opcionesHuespedes()"
+  (cambio)="aplicar($event)"
+  (limpiar)="limpiar()"
+/>
+
+@switch (estado()) {
+  @case ('cargando') {
+    <app-loading-indicator texto="Buscando alojamientos…" />
+  }
+  @case ('error') {
+    <app-error-state
+      mensaje="No pudimos traer los alojamientos. Revisa tu conexión e inténtalo de nuevo."
+      (reintentar)="cargar()"
+    />
+  }
+  @case ('listo') {
+    @if (resultados().length > 0) {
+      <section class="resultados contenedor">
+        <h1 class="resultados__titulo" aria-live="polite">{{ titulo() }}</h1>
+        <ul class="resultados__lista">
+          @for (alojamiento of resultados(); track alojamiento.id) {
+            <li>
+              <app-accommodation-card [alojamiento]="alojamiento" />
+            </li>
+          }
+        </ul>
+      </section>
+    } @else {
+      <app-page-banner titulo="Resultados de búsqueda" subtitulo="No se encontraron resultados para tu búsqueda">
+        <button type="button" class="boton boton--cta" (click)="limpiar()">+ Nueva búsqueda</button>
+      </app-page-banner>
+      <section class="sin-resultados">
+        <app-empty-state
+          titulo="Sin resultados."
+          mensaje="No encontramos alojamientos que coincidan con tus criterios de búsqueda. Intenta modificar los filtros o buscar en otra ubicación."
+          textoBoton="Explorar alojamientos"
+          (accion)="limpiar()"
+        />
+      </section>
+    }
+  }
+}

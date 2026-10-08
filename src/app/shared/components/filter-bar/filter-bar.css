@@ -1,0 +1,78 @@
+.filtros {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--green-100);
+}
+
+.filtros__formulario {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  padding-block: var(--space-3);
+}
+
+.filtros__campo {
+  flex: 1 1 10rem;
+}
+
+.filtros__campo--ancho {
+  flex-basis: 100%;
+}
+
+.filtros__control {
+  width: 100%;
+  min-height: var(--touch-target);
+  padding: var(--space-2) var(--space-3);
+  color: var(--green-600);
+  background-color: var(--white);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-full);
+  transition: border-color var(--transition-fast);
+}
+
+.filtros__control:hover {
+  border-color: var(--green-700);
+}
+
+.filtros__control:focus-visible {
+  border-color: var(--green-700);
+}
+
+.filtros__control::placeholder {
+  color: var(--placeholder);
+}
+
+.filtros__control[aria-invalid='true'] {
+  border-color: var(--error-border);
+}
+
+.filtros__limpiar {
+  flex: 0 0 auto;
+}
+
+.filtros__error {
+  min-height: 0;
+  padding-bottom: var(--space-2);
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--error);
+}
+
+.filtros__error:empty {
+  display: none;
+}
+
+@media (min-width: 64rem) {
+  .filtros__campo,
+  .filtros__campo--ancho {
+    flex: 0 1 12rem;
+  }
+
+  .filtros__campo--precio {
+    flex-basis: 15rem;
+  }
+
+  .filtros__campo--orden {
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,17 @@
+<section class="banner">
+  <div class="banner__contenido contenedor">
+    <img class="banner__logo" src="assets/logos/logo-blanco.png" alt="" width="44" height="52" />
+    <div class="banner__texto">
+      <h1 class="banner__titulo">{{ titulo }}</h1>
+      @if (subtitulo) {
+        <p class="banner__subtitulo">{{ subtitulo }}</p>
+      }
+    </div>
+    <div class="banner__accion">
+      <ng-content />
+    </div>
+  </div>
+  <svg class="banner__onda" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 34C220 8 460 50 720 30S1200 6 1440 30V60H0Z" />
+  </svg>
+</section>

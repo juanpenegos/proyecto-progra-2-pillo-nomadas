@@ -1,0 +1,68 @@
+<div class="filtros">
+  <form class="filtros__formulario contenedor" [formGroup]="formulario" (change)="emitir()" (ngSubmit)="emitir()" aria-label="Filtros de búsqueda">
+    <div class="filtros__campo">
+      <label class="solo-lector" for="filtro-ciudad">Ciudad</label>
+      <select class="filtros__control" id="filtro-ciudad" formControlName="ciudad">
+        <option value="">Ciudad</option>
+        @for (ciudad of ciudadesVisibles; track ciudad) {
+          <option [value]="ciudad">{{ ciudad }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="filtros__campo">
+      <label class="solo-lector" for="filtro-huespedes">Huéspedes</label>
+      <select class="filtros__control" id="filtro-huespedes" formControlName="huespedes">
+        <option [ngValue]="null">Huéspedes</option>
+        @for (n of opcionesHuespedes; track n) {
+          <option [ngValue]="n">{{ n === 1 ? '1 huésped' : n + ' huéspedes' }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="filtros__campo filtros__campo--ancho">
+      <label class="solo-lector" for="filtro-tipo">Tipo de alojamiento</label>
+      <select class="filtros__control" id="filtro-tipo" formControlName="tipo">
+        <option value="">Tipo de alojamiento</option>
+        @for (tipo of tiposVisibles; track tipo) {
+          <option [value]="tipo">{{ tipo }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="filtros__campo filtros__campo--ancho filtros__campo--precio">
+      <label class="solo-lector" for="filtro-precio">Precio máximo por noche</label>
+      <input
+        class="filtros__control"
+        id="filtro-precio"
+        type="number"
+        min="1"
+        step="10000"
+        inputmode="numeric"
+        placeholder="$ Precio máximo / noche"
+        formControlName="precioMax"
+        [attr.aria-invalid]="formulario.controls.precioMax.invalid"
+        aria-describedby="filtro-precio-error"
+      />
+    </div>
+
+    <button type="button" class="boton boton--secundario filtros__limpiar" [disabled]="!hayFiltros" (click)="limpiar.emit()">
+      Limpiar filtros
+    </button>
+
+    <div class="filtros__campo filtros__campo--orden">
+      <label class="solo-lector" for="filtro-orden">Ordenar por</label>
+      <select class="filtros__control" id="filtro-orden" formControlName="orden">
+        <option value="mejor-valorados">Mejor valorados</option>
+        <option value="menor-precio">Menor precio</option>
+        <option value="mayor-precio">Mayor precio</option>
+      </select>
+    </div>
+  </form>
+
+  <p class="filtros__error contenedor" id="filtro-precio-error" role="alert">
+    @if (formulario.controls.precioMax.invalid) {
+      Ingresa un precio máximo mayor a 0.
+    }
+  </p>
+</div>
