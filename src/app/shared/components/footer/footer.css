@@ -1,0 +1,46 @@
+.footer {
+  padding-block: var(--space-5);
+  color: var(--white);
+  background-color: var(--green-900);
+  border-top: 1px solid var(--green-700);
+}
+
+.footer__contenido {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.footer__marca {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.footer__nombre {
+  font-size: var(--text-a);
+  font-weight: 600;
+}
+
+.footer__derechos {
+  font-size: var(--text-label);
+  color: var(--white-50);
+}
+
+.footer__enlaces {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.footer__enlace {
+  font-size: var(--text-a);
+  color: var(--white-50);
+}
+
+@media (min-width: 48rem) {
+  .footer__contenido {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
