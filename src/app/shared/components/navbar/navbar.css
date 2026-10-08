@@ -1,0 +1,113 @@
+/* ===== Bloque navbar (mobile first) ===== */
+.navbar {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--green-100);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar__barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--navbar-height);
+}
+
+.navbar__marca {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--touch-target);
+  color: var(--green-700);
+}
+
+.navbar__logo {
+  width: auto;
+  height: 2.25rem;
+}
+
+.navbar__nombre {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--green-700);
+}
+
+.navbar__enlaces {
+  order: 3;
+  flex-basis: 100%;
+  padding-bottom: var(--space-2);
+}
+
+.navbar__lista {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-1);
+}
+
+.navbar__enlace {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-a);
+  font-weight: 500;
+  color: var(--green-700);
+  transition: background-color var(--transition-fast);
+}
+
+.navbar__enlace:hover {
+  text-decoration: none;
+  background-color: var(--green-50);
+}
+
+.navbar__enlace--activo,
+.navbar__enlace--activo:hover {
+  color: var(--white);
+  background-color: var(--green-700);
+}
+
+.navbar__acciones {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.navbar__buscar {
+  padding-inline: var(--space-3);
+  font-size: var(--text-a);
+}
+
+.navbar__hamburguesa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-full);
+  color: var(--green-700);
+  background-color: transparent;
+  transition: background-color var(--transition-fast);
+}
+
+.navbar__hamburguesa:hover {
+  background-color: var(--green-50);
+}
+
+@media (min-width: 48rem) {
+  .navbar__enlaces {
+    order: 0;
+    flex-basis: auto;
+    padding-bottom: 0;
+  }
+
+  .navbar__lista {
+    justify-content: flex-start;
+  }
+
+  .navbar__hamburguesa {
+    display: none;
+  }
+}
