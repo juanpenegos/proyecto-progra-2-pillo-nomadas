@@ -65,7 +65,7 @@ npm run build     # genera la versión de producción en dist/proyecto-progra-2-
 - **Reserva simulada:** solo después de una cotización válida; pide nombre y correo, crea una reserva en estado **CONFIRMADA** y muestra la confirmación.
 - **Mis reservas:** alojamiento, ciudad, llegada, salida, huéspedes, valor total y estado de cada reserva, o un mensaje si todavía no hay ninguna.
 - **Galería completa:** todas las fotos de un alojamiento, con pestañas por categoría.
-- **Escribir una reseña:** calificación de 1 a 5 y comentario; la reseña aparece de inmediato en el alojamiento.
+- **Escribir una reseña:** calificación de 1 a 5 estrellas y comentario; la reseña aparece de inmediato en el alojamiento y **actualiza su calificación**.
 - **Página no encontrada:** para rutas desconocidas y para alojamientos inexistentes o inactivos.
 - **Diseño adaptable** a móvil, tableta y escritorio, con estados de carga, vacío y error.
 
@@ -77,6 +77,7 @@ npm run build     # genera la versión de producción en dist/proyecto-progra-2-
 - No se cotiza sin fechas válidas, y no se reserva sin una cotización válida.
 - Tarifa de servicio = 10 % del subtotal; total = subtotal + limpieza + servicio.
 - Los alojamientos inactivos (`activo: false`) nunca se muestran.
+- La calificación de un alojamiento cambia con las reseñas nuevas: la calificación del JSON se toma como el promedio de sus reseñas actuales y cada reseña nueva se suma a ese promedio (por ejemplo, 4.5 con una reseña de 4 estrellas pasa a 4.3).
 
 ## Estructura general del proyecto
 
@@ -144,4 +145,4 @@ https://www.figma.com/design/ZvvSezJi9JoGXtPDnm2meV/pillos-nomadas-final
 
 ## Nota sobre los datos
 
-Las reservas y las reseñas nuevas se guardan solo en memoria: al recargar la página se pierden. Los alojamientos y las reseñas iniciales vienen del archivo `public/assets/data/marketplace-data.json`, que conserva la estructura del enunciado y agrega la fecha de las reseñas y, para la Cabaña en Guatapé, una galería de fotos descritas.
+Las reservas y las reseñas nuevas se guardan solo en memoria: al recargar la página se pierden, y la calificación de los alojamientos vuelve a la del JSON. Los alojamientos y las reseñas iniciales vienen del archivo `public/assets/data/marketplace-data.json`, que conserva la estructura del enunciado y agrega la fecha de las reseñas y, para la Cabaña en Guatapé, una galería de fotos descritas.

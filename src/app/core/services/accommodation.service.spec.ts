@@ -2,6 +2,7 @@ import { MarketplaceData } from '../models/marketplace-data.model';
 import { FILTROS_VACIOS } from '../models/search-filters.model';
 import { AccommodationRepository } from '../repositories/accommodation.repository';
 import { AccommodationService } from './accommodation.service';
+import { ReviewService } from './review.service';
 
 const crear = (id: number, ciudad: string, tipo: 'Apartamento' | 'Casa', capacidad: number, precio: number, calificacion: number, activo = true) => ({
   id, nombre: `Alojamiento ${id}`, descripcion: '', ciudad, ubicacion: ciudad, tipo, capacidad,
@@ -26,7 +27,9 @@ class RepositorioFalso extends AccommodationRepository {
 }
 
 describe('AccommodationService', () => {
-  const servicio = new AccommodationService(new RepositorioFalso());
+  const repositorio = new RepositorioFalso();
+  const resenas = new ReviewService(repositorio);
+  const servicio = new AccommodationService(repositorio, resenas);
 
   it('nunca devuelve alojamientos inactivos', async () => {
     const activos = await servicio.getActive();
@@ -85,5 +88,48 @@ describe('AccommodationService', () => {
   it('lista ciudades y tipos solo de alojamientos activos', async () => {
     expect(await servicio.getCities()).toEqual(['Bogotá', 'Cartagena', 'Medellín']);
     expect(await servicio.getTypes()).toEqual(['Apartamento', 'Casa']);
+  });
+
+  describe('calificación con reseñas nuevas', () => {
+    // Cada prueba usa servicios nuevos para no arrastrar reseñas de otra prueba.
+    const crearServicios = () => {
+      const repo = new RepositorioFalso();
+      const reseñas = new ReviewService(repo);
+      return { reseñas, accommodations: new AccommodationService(repo, reseñas) };
+    };
+
+    it('sin reseñas nuevas conserva la calificación del JSON', async () => {
+      const { accommodations } = crearServicios();
+      expect((await accommodations.getById(1))?.calificacion).toBe(4.8);
+    });
+
+    it('una reseña nueva cambia la calificación del alojamiento', async () => {
+      const { reseñas, accommodations } = crearServicios();
+      await reseñas.agregar(1, 'Juan', 3, 'Regular');
+      // El alojamiento no tenía reseñas en el JSON de la prueba: (4.8 × 1 + 3) ÷ 2 = 3.9
+      expect((await accommodations.getById(1))?.calificacion).toBe(3.9);
+    });
+
+    it('solo cambia el alojamiento reseñado; los demás conservan su calificación', async () => {
+      const { reseñas, accommodations } = crearServicios();
+      await reseñas.agregar(1, 'Juan', 1, 'Malo');
+      expect((await accommodations.getById(2))?.calificacion).toBe(4.9);
+      expect((await accommodations.getById(3))?.calificacion).toBe(4.6);
+    });
+
+    it('el listado se reordena según la nueva calificación', async () => {
+      const { reseñas, accommodations } = crearServicios();
+      // Antes: 2 (4.9), 1 (4.8), 3 (4.6). Una reseña de 1 estrella baja al alojamiento 2.
+      await reseñas.agregar(2, 'Juan', 1, 'Muy malo');
+      const orden = await accommodations.search(FILTROS_VACIOS, 'mejor-valorados');
+      expect(orden.map((a) => a.id)).toEqual([1, 3, 2]);
+    });
+
+    it('no modifica los datos originales ni muestra alojamientos inactivos', async () => {
+      const { reseñas, accommodations } = crearServicios();
+      await reseñas.agregar(1, 'Juan', 1, 'Malo');
+      expect(datos.alojamientos[0].calificacion).toBe(4.8);
+      expect((await accommodations.getActive()).map((a) => a.id)).toEqual([1, 2, 3]);
+    });
   });
 });

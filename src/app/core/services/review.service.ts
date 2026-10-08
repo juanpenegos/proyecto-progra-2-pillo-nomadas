@@ -8,6 +8,9 @@ import { hoyISO } from '../utils/dates';
 export class ReviewService {
   private readonly _nuevas = signal<Review[]>([]);
 
+  /** Reseñas escritas por el usuario durante la sesión, de solo lectura. */
+  readonly nuevas = this._nuevas.asReadonly();
+
   constructor(private readonly repository: AccommodationRepository) {}
 
   async getAll(): Promise<Review[]> {

@@ -9,7 +9,7 @@
       <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true">
         <path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" />
       </svg>
-      <span class="tarjeta__calificacion-valor">{{ alojamiento.calificacion }}</span>
+      <span class="tarjeta__calificacion-valor">{{ alojamiento.calificacion | number: '1.1-1' }}</span>
     </span>
   </div>
 
@@ -50,7 +50,7 @@
         <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true">
           <path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" />
         </svg>
-        {{ alojamiento.calificacion }}
+        {{ alojamiento.calificacion | number: '1.1-1' }}
       </p>
     </div>
   </div>

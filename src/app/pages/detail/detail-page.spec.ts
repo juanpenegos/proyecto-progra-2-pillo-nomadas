@@ -5,6 +5,7 @@ import { Accommodation } from '../../core/models/accommodation.model';
 import { MarketplaceData } from '../../core/models/marketplace-data.model';
 import { AccommodationRepository } from '../../core/repositories/accommodation.repository';
 import { BookingService } from '../../core/services/booking.service';
+import { ReviewService } from '../../core/services/review.service';
 import { hoyISO } from '../../core/utils/dates';
 import { DetailPage } from './detail-page';
 
@@ -242,5 +243,21 @@ describe('DetailPage', () => {
     const sinResenas = await abrir('/alojamientos/2');
     const enlace2 = Array.from(sinResenas.html.querySelectorAll('a')).find((a) => a.textContent?.includes('Escribir una reseña'));
     expect(enlace2?.getAttribute('href')).toBe('/alojamientos/2/resena');
+  });
+
+  it('al escribir una reseña nueva cambia la calificación del alojamiento', async () => {
+    const { harness, html } = await abrir('/alojamientos/1');
+    expect(html.querySelector('.puntaje__valor')?.textContent?.trim()).toBe('4.7');
+
+    // Alojamiento 1 tiene 2 reseñas en el JSON: (4.7 × 2 + 3) ÷ 3 = 4.13… → 4.1
+    await TestBed.inject(ReviewService).agregar(1, 'Juan', 3, 'Regular');
+    await harness.navigateByUrl('/alojamientos/2'); // se cambia de alojamiento para que la página vuelva a cargar
+    await esperar(harness);
+    await harness.navigateByUrl('/alojamientos/1');
+    await esperar(harness);
+
+    expect(html.querySelector('.puntaje__valor')?.textContent?.trim()).toBe('4.1');
+    expect(html.querySelector('.detalle__meta strong')?.textContent?.trim()).toBe('4.1');
+    expect(html.querySelectorAll('app-review-card').length).toBe(3);
   });
 });

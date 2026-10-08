@@ -1,3 +1,4 @@
+import { DecimalPipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Accommodation } from '../../../core/models/accommodation.model';
@@ -9,7 +10,7 @@ const MAX_SERVICIOS_VISIBLES = 3;
 /** Componente "tonto": solo muestra el alojamiento que recibe. Toda la tarjeta lleva al detalle. */
 @Component({
   selector: 'app-accommodation-card',
-  imports: [RouterLink, ImageWithFallback],
+  imports: [DecimalPipe, RouterLink, ImageWithFallback],
   templateUrl: './accommodation-card.html',
   styleUrl: './accommodation-card.css',
 })

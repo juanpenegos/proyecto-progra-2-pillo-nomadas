@@ -9,7 +9,7 @@
     </p>
     <span class="cotizar__calificacion">
       <app-star-rating [valor]="alojamiento.calificacion" [tamano]="10" />
-      {{ alojamiento.calificacion }}
+      {{ alojamiento.calificacion | number: '1.1-1' }}
     </span>
   </div>
 
