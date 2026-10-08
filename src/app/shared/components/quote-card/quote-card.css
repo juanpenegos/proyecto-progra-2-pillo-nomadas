@@ -46,7 +46,7 @@
 
 .cotizar__fechas {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   border: 1px solid var(--green-100);
   border-radius: var(--radius-lg);
 }
@@ -66,6 +66,7 @@
 }
 
 .cotizar__fecha {
+  min-width: 0;
   min-height: var(--touch-target);
   padding: 0;
   color: var(--green-900);
