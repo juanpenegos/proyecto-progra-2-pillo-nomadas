@@ -1,0 +1,131 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  color: var(--green-900);
+  background-color: var(--white);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-fast);
+}
+
+.tarjeta:hover {
+  text-decoration: none;
+  box-shadow: var(--shadow-lg);
+}
+
+.tarjeta__foto {
+  position: relative;
+  height: 13rem;
+  background-color: var(--green-50);
+}
+
+.tarjeta__tipo,
+.tarjeta__calificacion {
+  position: absolute;
+  top: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+  font-size: var(--text-label);
+  font-weight: 600;
+  background-color: var(--white-90);
+}
+
+.tarjeta__tipo {
+  left: var(--space-2);
+  padding-inline: var(--space-3);
+  color: var(--green-700);
+}
+
+.tarjeta__calificacion {
+  right: var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--orange-500);
+}
+
+.tarjeta__calificacion-valor {
+  color: var(--green-900);
+}
+
+.tarjeta__cuerpo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+}
+
+.tarjeta__nombre {
+  font-family: var(--font-body);
+  font-size: var(--text-a);
+  font-weight: 600;
+}
+
+.tarjeta__ciudad,
+.tarjeta__datos {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-label);
+  color: var(--green-400);
+}
+
+.tarjeta__servicios {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.tarjeta__servicio {
+  padding: 2px var(--space-2);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-full);
+  font-size: var(--text-label);
+  color: var(--green-700);
+  background-color: var(--green-50);
+}
+
+.tarjeta__mas {
+  font-size: var(--text-label);
+  color: var(--green-400);
+}
+
+.tarjeta__pie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--green-100);
+}
+
+.tarjeta__precio {
+  font-size: var(--text-p);
+}
+
+.tarjeta__noche {
+  font-size: var(--text-label);
+  color: var(--green-400);
+}
+
+.tarjeta__estrellas {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-label);
+  color: var(--green-400);
+}
+
+.tarjeta__estrellas svg {
+  color: var(--orange-500);
+}
