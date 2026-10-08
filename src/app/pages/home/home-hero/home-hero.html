@@ -20,14 +20,21 @@
       experiencias inolvidables.
     </p>
 
-    <form class="buscador" [formGroup]="busqueda" (ngSubmit)="enviar()" aria-label="Buscar alojamientos">
+    <form class="buscador" [formGroup]="busqueda" (ngSubmit)="enviar()" aria-label="Buscar alojamientos" novalidate>
       <div class="buscador__campo buscador__campo--separado">
         <svg class="buscador__icono" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z" />
           <circle cx="12" cy="10" r="3" />
         </svg>
         <label class="solo-lector" for="buscador-ciudad">Destino</label>
-        <select class="buscador__select" id="buscador-ciudad" formControlName="ciudad">
+        <select
+          class="buscador__select"
+          id="buscador-ciudad"
+          formControlName="ciudad"
+          required
+          [attr.aria-invalid]="faltante('ciudad')"
+          aria-describedby="buscador-error"
+        >
           <option value="">¿A dónde vas?</option>
           @for (ciudad of ciudades; track ciudad) {
             <option [value]="ciudad">{{ ciudad }}</option>
@@ -41,7 +48,14 @@
           <circle cx="12" cy="7" r="4" />
         </svg>
         <label class="solo-lector" for="buscador-huespedes">Huéspedes</label>
-        <select class="buscador__select" id="buscador-huespedes" formControlName="huespedes">
+        <select
+          class="buscador__select"
+          id="buscador-huespedes"
+          formControlName="huespedes"
+          required
+          [attr.aria-invalid]="faltante('huespedes')"
+          aria-describedby="buscador-error"
+        >
           <option [ngValue]="null">Huéspedes</option>
           @for (n of opcionesHuespedes; track n) {
             <option [ngValue]="n">{{ n === 1 ? '1 huésped' : n + ' huéspedes' }}</option>
@@ -56,6 +70,8 @@
         </svg>
         Buscar
       </button>
+
+      <p class="buscador__error" id="buscador-error" role="alert">{{ mensajeError }}</p>
     </form>
   </div>
 

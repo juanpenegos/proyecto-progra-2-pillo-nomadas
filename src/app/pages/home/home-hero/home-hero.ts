@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 export interface CriteriosBusqueda {
   ciudad: string;
@@ -21,12 +21,36 @@ export class HomeHero {
   /** Si falta hero.jpg, se queda el fondo verde oscuro y el diseño no se rompe. */
   protected readonly fotoFallo = signal(false);
 
+  /** Para buscar hay que llenar primero el destino y los huéspedes. */
   protected readonly busqueda = new FormGroup({
-    ciudad: new FormControl('', { nonNullable: true }),
-    huespedes: new FormControl<number | null>(null),
+    ciudad: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    huespedes: new FormControl<number | null>(null, [Validators.required]),
   });
 
   protected enviar(): void {
+    if (this.busqueda.invalid) {
+      this.busqueda.markAllAsTouched(); // así aparece el mensaje de lo que falta
+      return;
+    }
     this.buscar.emit(this.busqueda.getRawValue());
+  }
+
+  /** El campo se marca solo después de que el usuario lo tocó o intentó buscar. */
+  protected faltante(campo: 'ciudad' | 'huespedes'): boolean {
+    const control = this.busqueda.controls[campo];
+    return control.invalid && control.touched;
+  }
+
+  /** Mensaje específico según lo que falte, para decir cómo corregirlo. */
+  protected get mensajeError(): string {
+    const sinCiudad = this.faltante('ciudad');
+    const sinHuespedes = this.faltante('huespedes');
+    if (sinCiudad && sinHuespedes) {
+      return 'Elige a dónde vas y cuántos huéspedes serán para buscar.';
+    }
+    if (sinCiudad) {
+      return 'Elige a dónde vas para buscar.';
+    }
+    return sinHuespedes ? 'Elige cuántos huéspedes serán para buscar.' : '';
   }
 }
