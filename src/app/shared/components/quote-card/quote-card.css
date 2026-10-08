@@ -1,0 +1,140 @@
+:host {
+  display: block;
+}
+
+.cotizar {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background-color: var(--white);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.cotizar__cabecera {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--green-100);
+}
+
+.cotizar__precio {
+  flex: 1;
+  display: grid;
+  font-size: var(--text-p);
+}
+
+.cotizar__noche {
+  font-size: var(--text-label);
+  color: var(--green-400);
+}
+
+.cotizar__calificacion {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-label);
+  color: var(--green-400);
+}
+
+.cotizar__formulario {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.cotizar__fechas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-lg);
+}
+
+.cotizar__campo {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+}
+
+.cotizar__campo label,
+.cotizar__etiqueta {
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--green-700);
+}
+
+.cotizar__fecha {
+  min-height: var(--touch-target);
+  padding: 0;
+  color: var(--green-900);
+  background: transparent;
+  border: none;
+}
+
+.cotizar__fecha[aria-invalid='true'] {
+  color: var(--error);
+}
+
+.cotizar__huespedes {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-lg);
+}
+
+.cotizar__contador {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.cotizar__paso {
+  width: var(--touch-target);
+  height: var(--touch-target);
+  padding: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--green-700);
+  background-color: var(--white);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast);
+}
+
+.cotizar__paso:hover:not(:disabled) {
+  background-color: var(--green-50);
+}
+
+.cotizar__paso:disabled {
+  opacity: 0.4;
+}
+
+.cotizar__cantidad {
+  min-width: 1.5rem;
+  text-align: center;
+  font-size: var(--text-p);
+}
+
+.cotizar__error {
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--error);
+}
+
+.cotizar__error:empty {
+  display: none;
+}
+
+.cotizar__boton {
+  width: 100%;
+}
+
+.cotizar__ayuda {
+  max-width: none;
+  font-size: var(--text-label);
+  text-align: center;
+  color: var(--green-400);
+}
