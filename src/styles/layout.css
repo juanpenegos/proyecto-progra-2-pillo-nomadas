@@ -1,0 +1,29 @@
+/* Bloque contenedor: centra el contenido con ancho máximo y márgenes laterales */
+.contenedor {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--space-3);
+}
+
+@media (min-width: 48rem) {
+  .contenedor {
+    padding-inline: var(--space-4);
+  }
+}
+
+/* Enlace "Saltar al contenido": solo se ve al recibir el foco */
+.saltar-contenido {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  color: var(--white);
+  background-color: var(--green-700);
+  transform: translateY(-200%);
+}
+
+.saltar-contenido:focus {
+  transform: translateY(0);
+}
