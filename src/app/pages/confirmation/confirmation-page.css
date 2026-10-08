@@ -1,0 +1,122 @@
+.confirmacion {
+  display: grid;
+  place-items: center;
+  min-height: 32rem;
+  padding: var(--space-6) var(--space-3);
+  background-color: var(--green-50);
+}
+
+.confirmacion__tarjeta {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 26rem;
+  padding: var(--space-5) var(--space-4);
+  text-align: center;
+  background-color: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.confirmacion__logo {
+  width: auto;
+  height: 3rem;
+}
+
+.confirmacion__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  color: var(--success-light);
+  background-color: var(--success-bg);
+  border-radius: var(--radius-full);
+}
+
+.confirmacion__titulo {
+  font-size: var(--text-h4);
+}
+
+.confirmacion__texto {
+  color: var(--green-600);
+}
+
+.confirmacion__texto strong {
+  color: var(--green-900);
+}
+
+.confirmacion__texto .confirmacion__alojamiento {
+  color: var(--green-700);
+}
+
+.resumen {
+  display: grid;
+  gap: var(--space-2);
+  width: 100%;
+  margin: 0;
+  padding: var(--space-3);
+  text-align: left;
+  background-color: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-lg);
+}
+
+.resumen__fila {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: var(--text-a);
+}
+
+.resumen__fila dt {
+  color: var(--green-600);
+}
+
+.resumen__fila dd {
+  margin: 0;
+  font-weight: 500;
+  text-align: right;
+}
+
+.resumen__fila--total {
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--green-100);
+  font-weight: 700;
+}
+
+.resumen__total {
+  font-size: var(--text-p);
+  color: var(--orange-500);
+}
+
+.resumen__estado {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-label);
+  font-weight: 700;
+  color: var(--success);
+  background-color: var(--success-bg-light);
+  border-radius: var(--radius-md);
+}
+
+.resumen__estado dd {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin: 0;
+}
+
+.confirmacion__acciones {
+  display: grid;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+@media (min-width: 48rem) {
+  .confirmacion__acciones {
+    grid-template-columns: 1fr 1fr;
+  }
+}
