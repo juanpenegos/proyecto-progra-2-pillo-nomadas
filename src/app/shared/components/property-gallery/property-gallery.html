@@ -1,0 +1,10 @@
+<div class="galeria" [class.galeria--sola]="imagenes.length < 2">
+  <div class="galeria__principal">
+    <app-image-with-fallback [src]="imagenes[0] ?? ''" [alt]="'Foto principal de ' + nombre" />
+  </div>
+  @if (imagenes.length > 1) {
+    <div class="galeria__secundaria">
+      <app-image-with-fallback [src]="imagenes[1]" [alt]="'Segunda foto de ' + nombre" />
+    </div>
+  }
+</div>
