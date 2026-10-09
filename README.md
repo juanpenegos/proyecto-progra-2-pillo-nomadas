@@ -1,12 +1,10 @@
 # Pillo Nómadas
 
-> NUESTRA CASA ES EL MUNDO
-
 ## Descripción
 
-**Pillo Nómadas** es una aplicación web (solo frontend) para explorar alojamientos de estadía temporal, cotizar una estancia y simular una reserva. Es el proyecto del curso *Desarrollo de Sistemas de Información 3* (Ingeniería de Sistemas, Universidad El Bosque), con cliente ficticio *Inversiones LR*.
+Pillo Nómadas es una página web para buscar alojamientos de estadía temporal, cotizar una estadía y simular una reserva. Es el proyecto del curso Desarrollo de Sistemas de Información 3 de la Universidad El Bosque.
 
-No hay backend ni base de datos: los alojamientos y reseñas salen de un archivo JSON que se consulta desde un servicio de Angular, y las reservas y reseñas nuevas se guardan **solo en memoria** (se pierden al recargar la página, lo que permite el enunciado).
+No tiene backend ni base de datos. Los alojamientos y las reseñas salen de un archivo JSON, y las reservas y reseñas nuevas se guardan solo en memoria, así que se pierden al recargar la página.
 
 ## Integrantes
 
@@ -14,22 +12,20 @@ No hay backend ni base de datos: los alojamientos y reseñas salen de un archivo
 
 ## Tecnologías utilizadas
 
-- [Angular](https://angular.dev/) 22 con componentes *standalone* y plantillas con `@if` / `@for`
-- TypeScript 6 en modo estricto
-- CSS puro (variables CSS, Flexbox y Grid), sin librerías de interfaz
-- Formularios reactivos y enrutador de Angular
-- Vitest y jsdom para las pruebas unitarias
-- Fuentes DM Serif Display y Outfit (Google Fonts)
-- Datos en JSON (`public/assets/data/marketplace-data.json`)
+- Angular 22 (componentes standalone)
+- TypeScript
+- CSS puro, sin librerías de interfaz
+- Formularios reactivos y el enrutador de Angular
+- Vitest para las pruebas
+- Datos en un archivo JSON
 
 ## Requisitos para ejecutar la aplicación
 
-- [Node.js](https://nodejs.org/) 24.x (probado con 24.18.1)
-- npm 11.x (viene con Node.js; probado con 11.16.0)
-- [Git](https://git-scm.com/) para clonar el repositorio
-- Conexión a internet para cargar las fuentes y el mapa de ubicación (sin conexión la aplicación sigue funcionando, con las fuentes del sistema y un mensaje en lugar del mapa)
+- Node.js 24 (probado con 24.18.1)
+- npm 11 (viene con Node.js)
+- Git
 
-No hace falta instalar Angular CLI por separado: viene como dependencia del proyecto y se ejecuta con los scripts de `npm`.
+No hace falta instalar Angular CLI aparte, ya viene en las dependencias del proyecto.
 
 ## Instrucciones de instalación
 
@@ -41,111 +37,56 @@ npm install
 
 ## Instrucciones de ejecución
 
-Servidor de desarrollo:
-
 ```bash
 npm start
 ```
 
-Abre http://localhost:4200 en el navegador. Si el puerto 4200 está ocupado, usa otro: `npm start -- --port 4300`.
+Después se abre http://localhost:4200 en el navegador. Si el puerto 4200 está ocupado se puede usar otro con `npm start -- --port 4300`.
 
-Otros comandos útiles:
+También están estos comandos:
 
 ```bash
-npm test          # ejecuta las pruebas unitarias una vez
-npm run build     # genera la versión de producción en dist/proyecto-progra-2-pillo-nomadas
+npm test          # corre las pruebas
+npm run build     # genera la versión de producción en dist/
 ```
 
 ## Principales funcionalidades
 
-- **Inicio:** presentación de la plataforma, buscador (destino y huéspedes), cifras calculadas con los datos, exploración por destino y los 3 alojamientos mejor calificados.
-- **Explorar:** listado de alojamientos con imagen, nombre, ciudad, tipo, capacidad, precio por noche, calificación y servicios. Filtros dinámicos por ciudad, número de huéspedes, tipo y precio máximo; orden (mejor valorados, menor y mayor precio); botón **Limpiar filtros**; mensaje cuando no hay resultados. Los filtros viven en la URL, así que sobreviven a una recarga y se pueden compartir.
-- **Detalle del alojamiento:** descripción, ubicación con mapa, habitaciones, camas, baños, servicios, reglas básicas, calificación, reseñas e imágenes.
-- **Cotización:** fecha de llegada, fecha de salida y huéspedes. Calcula noches, subtotal (noches × precio), tarifa de limpieza, tarifa de servicio (10 % del subtotal) y total, con errores visibles junto a cada campo. Si se cambian fechas o huéspedes, la cotización anterior se invalida.
-- **Reserva simulada:** solo después de una cotización válida; pide nombre y correo, crea una reserva en estado **CONFIRMADA** y muestra la confirmación.
-- **Mis reservas:** alojamiento, ciudad, llegada, salida, huéspedes, valor total y estado de cada reserva, o un mensaje si todavía no hay ninguna.
-- **Galería completa:** todas las fotos de un alojamiento, con pestañas por categoría.
-- **Escribir una reseña:** calificación de 1 a 5 estrellas y comentario; la reseña aparece de inmediato en el alojamiento y **actualiza su calificación**.
-- **Página no encontrada:** para rutas desconocidas y para alojamientos inexistentes o inactivos.
-- **Diseño adaptable** a móvil, tableta y escritorio, con estados de carga, vacío y error.
-
-### Reglas de negocio
-
-- La salida debe ser posterior a la llegada, y la llegada no puede ser anterior a hoy.
-- Los huéspedes deben ser más de cero y no superar la capacidad del alojamiento.
-- El precio por noche debe ser mayor que cero.
-- No se cotiza sin fechas válidas, y no se reserva sin una cotización válida.
-- Tarifa de servicio = 10 % del subtotal; total = subtotal + limpieza + servicio.
-- Los alojamientos inactivos (`activo: false`) nunca se muestran.
-- La calificación de un alojamiento cambia con las reseñas nuevas: la calificación del JSON se toma como el promedio de sus reseñas actuales y cada reseña nueva se suma a ese promedio (por ejemplo, 4.5 con una reseña de 4 estrellas pasa a 4.3).
+- Inicio con buscador por destino y huéspedes, los mejores alojamientos y exploración por destino.
+- Explorar: listado de alojamientos con filtros por ciudad, huéspedes, tipo y precio máximo, orden y botón para limpiar filtros.
+- Detalle de cada alojamiento con descripción, mapa, servicios, reglas, reseñas y fotos.
+- Cotización con fechas y huéspedes: calcula noches, subtotal, limpieza, tarifa de servicio (10 %) y total.
+- Reserva simulada, que solo se puede hacer después de una cotización válida.
+- Mis reservas, con las reservas hechas durante la sesión.
+- Galería completa de fotos de cada alojamiento, con pestañas por categoría.
+- Reseñas con calificación de 1 a 5 estrellas; al agregar una, la calificación del alojamiento se actualiza.
+- Los alojamientos inactivos no se muestran, y hay página de "no encontrado".
+- Se adapta a celular, tableta y computador.
 
 ## Estructura general del proyecto
 
 ```
 proyecto-progra-2-pillo-nomadas/
-├── public/                        Archivos estáticos que se publican tal cual
-│   └── assets/
-│       ├── data/                  marketplace-data.json (alojamientos y reseñas)
-│       ├── images/                Fotos de los alojamientos y placeholder.svg
-│       └── logos/                 Logos de la marca
+├── public/assets/
+│   ├── data/          marketplace-data.json (alojamientos y reseñas)
+│   ├── images/        fotos de los alojamientos y placeholder.svg
+│   └── logos/         logos
 ├── src/
-│   ├── index.html                 Página base (fuentes, idioma, viewport)
-│   ├── styles.css                 Importa los estilos globales
-│   ├── styles/                    tokens, base, layout y botones (CSS)
+│   ├── index.html
+│   ├── styles/        estilos globales
 │   └── app/
-│       ├── core/                  Lógica de la aplicación, sin pantallas
-│       │   ├── models/            Interfaces TypeScript (Accommodation, Review, Quote, Booking…)
-│       │   ├── repositories/      Acceso a datos: puerto abstracto y lectura del JSON
-│       │   ├── services/          Alojamientos, cotización, reservas y reseñas
-│       │   ├── validators/        Reglas de fechas, huéspedes, precio y contacto
-│       │   └── utils/             Fechas, formato de pesos y filtros de la URL
-│       ├── pages/                 Una página por ruta (componentes "inteligentes")
-│       │   ├── home/  explore/  detail/  gallery/  review-form/
-│       │   └── confirmation/  my-bookings/  not-found/
-│       └── shared/components/     Piezas reutilizables (componentes "tontos")
-├── angular.json                   Configuración del proyecto Angular
-├── package.json                   Dependencias y scripts
-└── tsconfig*.json                 Configuración de TypeScript
+│       ├── core/      modelos, servicios, repositorio, validadores y utilidades
+│       ├── pages/     una carpeta por pantalla (inicio, explorar, detalle, galería...)
+│       └── shared/    componentes que se reutilizan
+├── angular.json
+├── package.json
+└── tsconfig*.json
 ```
 
-**Cómo se organiza el código:** las páginas piden los datos a los servicios y se los pasan a los componentes compartidos con `@Input()`; estos avisan con `@Output()` y no saben de dónde vienen los datos. El JSON solo se consulta desde un servicio (a través de un repositorio), nunca desde la interfaz. Las reglas de negocio están en `core/validators` y `core/services`, separadas de las pantallas.
-
-### Rutas
-
-| Ruta | Pantalla |
-|---|---|
-| `/` | Inicio |
-| `/explorar` | Listado con filtros (`?ciudad=&huespedes=&tipo=&precioMax=&orden=`) |
-| `/alojamientos/:id` | Detalle, cotización y reserva |
-| `/alojamientos/:id/galeria` | Galería completa |
-| `/alojamientos/:id/resena` | Escribir una reseña |
-| `/reserva-confirmada/:id` | Confirmación de la reserva |
-| `/mis-reservas` | Reservas hechas |
-| `**` | Página no encontrada |
-
-## Imágenes de los alojamientos
-
-Las fotos van en `public/assets/images/` con los nombres que usa el JSON. Si falta alguna, la aplicación muestra `placeholder.svg` y el diseño no se rompe.
-
-| Archivo | Uso |
-|---|---|
-| `loft-bogota.jpg`, `loft-bogota-2.jpg` | Loft moderno en Chapinero |
-| `cartagena.jpg`, `cartagena-2.jpg` | Apartamento frente al mar |
-| `cartagena-galeria-1.jpg` a `cartagena-galeria-7.jpg` | Galería completa del Apartamento frente al mar (7 fotos) |
-| `guatape.jpg`, `guatape-2.jpg` | Cabaña en Guatapé |
-| `guatape-galeria-1.jpg` a `guatape-galeria-7.jpg` | Galería completa de la Cabaña en Guatapé (7 fotos, en el orden del diseño) |
-| `villa-leyva.jpg`, `villa-leyva-2.jpg` | Casa colonial en Villa de Leyva |
-| `villa-leyva-galeria-1.jpg` a `villa-leyva-galeria-7.jpg` | Galería completa de la Casa colonial en Villa de Leyva (7 fotos) |
-| `medellin.jpg` | Apartamento ejecutivo Medellín |
-| `armenia.jpg` | Casa campestre (inactivo, no se muestra) |
-| `anfitriones.jpg` | Bloque "¿Tienes un espacio para compartir?" |
+Las páginas piden los datos a los servicios y se los pasan a los componentes compartidos. El JSON solo se lee desde un servicio, nunca directo desde las pantallas, y las reglas de negocio están en `core`, separadas de la interfaz.
 
 ## Diseño
 
-- **Diseño de baja fidelidad:** https://drive.google.com/file/d/1LvzEUqMN1osvlI4sXCa9QhiiCnT9VthR/view?usp=sharing
-- **Alta fidelidad, diseño (Figma):** https://www.figma.com/design/8xiFFFCTM05oEbLwyGIWCB/pillo-nomadas-version-final?node-id=0-1&t=BUaSUAEQkp1QYYbI-1
-- **Alta fidelidad, prototipo interactivo (Figma):** https://www.figma.com/proto/8xiFFFCTM05oEbLwyGIWCB/pillo-nomadas-version-final?node-id=1-4428&p=f&t=YnYGhPDv3KRmlCOd-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1
-
-## Nota sobre los datos
-
-Las reservas y las reseñas nuevas se guardan solo en memoria: al recargar la página se pierden, y la calificación de los alojamientos vuelve a la del JSON. Los alojamientos y las reseñas iniciales vienen del archivo `public/assets/data/marketplace-data.json`, que conserva la estructura del enunciado y agrega la fecha de las reseñas y, para la Cabaña en Guatapé, una galería de fotos descritas.
+- Baja fidelidad: https://drive.google.com/file/d/1LvzEUqMN1osvlI4sXCa9QhiiCnT9VthR/view?usp=sharing
+- Alta fidelidad (diseño en Figma): https://www.figma.com/design/8xiFFFCTM05oEbLwyGIWCB/pillo-nomadas-version-final?node-id=0-1&t=BUaSUAEQkp1QYYbI-1
+- Alta fidelidad (prototipo interactivo en Figma): https://www.figma.com/proto/8xiFFFCTM05oEbLwyGIWCB/pillo-nomadas-version-final?node-id=1-4428&p=f&t=YnYGhPDv3KRmlCOd-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1
