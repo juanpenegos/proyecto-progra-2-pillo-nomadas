@@ -67,23 +67,61 @@ npm run build     # genera la versión de producción en dist/
 
 ```
 proyecto-progra-2-pillo-nomadas/
-├── public/assets/
-│   ├── data/          marketplace-data.json (alojamientos y reseñas)
-│   ├── images/        fotos de los alojamientos y placeholder.svg
-│   └── logos/         logos
+├── public/                    archivos que se publican tal cual
+│   └── assets/
+│       ├── data/              marketplace-data.json (alojamientos y reseñas)
+│       ├── images/            fotos de los alojamientos y placeholder.svg
+│       └── logos/             logos de la marca
 ├── src/
-│   ├── index.html
-│   ├── styles/        estilos globales
+│   ├── index.html             página base
+│   ├── main.ts                arranque de la aplicación
+│   ├── styles.css             importa los estilos globales
+│   ├── styles/                tokens (colores y medidas), base, layout y botones
 │   └── app/
-│       ├── core/      modelos, servicios, repositorio, validadores y utilidades
-│       ├── pages/     una carpeta por pantalla (inicio, explorar, detalle, galería...)
-│       └── shared/    componentes que se reutilizan
-├── angular.json
-├── package.json
-└── tsconfig*.json
+│       ├── app.ts             componente raíz (barra, contenido y pie de página)
+│       ├── app.routes.ts      rutas de la aplicación
+│       ├── app.config.ts      configuración (router, http)
+│       ├── core/              lógica, sin pantallas
+│       │   ├── models/        interfaces: alojamiento, reseña, cotización, reserva, filtros
+│       │   ├── repositories/  acceso a los datos (clase abstracta y lectura del JSON)
+│       │   ├── services/      alojamientos, cotización, reservas y reseñas
+│       │   ├── validators/    validación de fechas, huéspedes y precio
+│       │   └── utils/         fechas, formato de pesos, filtros de la URL y calificación
+│       ├── pages/             una carpeta por pantalla
+│       │   ├── home/          inicio (con su portada y el bloque de anfitriones)
+│       │   ├── explore/       listado con filtros
+│       │   ├── detail/        detalle, cotización y reserva
+│       │   ├── gallery/       galería completa
+│       │   ├── review-form/   escribir una reseña
+│       │   ├── confirmation/  reserva confirmada
+│       │   ├── my-bookings/   mis reservas
+│       │   └── not-found/     página no encontrada
+│       └── shared/components/ piezas que se reutilizan en varias pantallas
+│           ├── navbar, mobile-menu, footer, page-banner
+│           ├── accommodation-card, filter-bar, property-gallery, location-map
+│           ├── quote-card, quote-summary, booking-card, contact-form
+│           ├── review-card, rating-input, star-rating
+│           └── empty-state, error-state, loading-indicator, image-with-fallback, info-list
+├── angular.json               configuración del proyecto Angular
+├── package.json               dependencias y comandos
+└── tsconfig*.json             configuración de TypeScript
 ```
 
-Las páginas piden los datos a los servicios y se los pasan a los componentes compartidos. El JSON solo se lee desde un servicio, nunca directo desde las pantallas, y las reglas de negocio están en `core`, separadas de la interfaz.
+Cada componente tiene su archivo `.ts`, su `.html` y su `.css`, y las pruebas están junto al código en archivos `.spec.ts`.
+
+Las páginas piden los datos a los servicios y se los pasan a los componentes compartidos con `@Input()`; estos avisan con `@Output()` y no saben de dónde vienen los datos. El JSON solo se lee desde un servicio (a través del repositorio), nunca directo desde las pantallas, y las reglas de negocio están en `core`, separadas de la interfaz.
+
+## Reglas de negocio
+
+- La fecha de salida debe ser posterior a la de llegada, y la llegada no puede ser anterior a hoy.
+- Los huéspedes deben ser al menos 1 y no pasar la capacidad del alojamiento.
+- El precio por noche debe ser mayor que cero.
+- No se cotiza sin fechas válidas, y no se reserva sin una cotización válida.
+- La tarifa de servicio es el 10 % del subtotal, y el total es subtotal + limpieza + servicio.
+- Si se cambian las fechas o los huéspedes, la cotización anterior se descarta.
+- Los alojamientos inactivos nunca se muestran.
+- Una reseña nueva cambia la calificación del alojamiento.
+- La búsqueda del inicio pide destino y huéspedes.
 
 ## Diseño
 
