@@ -188,6 +188,71 @@
       "reglas": [
         "No fiestas",
         "Máximo 8 huéspedes"
+      ],
+      "galeria": [
+        {
+          "src": "assets/images/villa-leyva-galeria-1.jpg",
+          "titulo": "Fachada colonial",
+          "categoria": "Exterior",
+          "seccion": "Fachada y patio"
+        },
+        {
+          "src": "assets/images/villa-leyva-galeria-2.jpg",
+          "titulo": "Patio con fuente",
+          "categoria": "Patio",
+          "seccion": "Fachada y patio"
+        },
+        {
+          "src": "assets/images/villa-leyva-galeria-3.jpg",
+          "titulo": "Vista a las montañas",
+          "categoria": "Exterior",
+          "seccion": "Fachada y patio"
+        },
+        {
+          "src": "assets/images/villa-leyva-galeria-4.jpg",
+          "titulo": "Sala principal",
+          "categoria": "Interiores",
+          "seccion": "Espacios interiores"
+        },
+        {
+          "src": "assets/images/villa-leyva-galeria-5.jpg",
+          "titulo": "Comedor",
+          "categoria": "Interiores",
+          "seccion": "Espacios interiores"
+        },
+        {
+          "src": "assets/images/villa-leyva-galeria-6.jpg",
+          "titulo": "Habitación principal",
+          "categoria": "Habitaciones",
+          "seccion": "Habitaciones y baños"
+        },
+        {
+          "src": "assets/images/villa-leyva-galeria-7.jpg",
+          "titulo": "Baño",
+          "categoria": "Baños",
+          "seccion": "Habitaciones y baños"
+        }
+      ],
+      "galeriaSecciones": [
+        {
+          "titulo": "Fachada y patio",
+          "descripcion": "La casa colonial, su patio de piedra y las vistas al valle de Villa de Leyva."
+        },
+        {
+          "titulo": "Espacios interiores",
+          "descripcion": "Salas y comedor con vigas de madera para compartir en familia."
+        },
+        {
+          "titulo": "Habitaciones y baños",
+          "descripcion": "Descanso cómodo en pleno centro histórico."
+        }
+      ],
+      "galeriaCategorias": [
+        "Exterior",
+        "Patio",
+        "Interiores",
+        "Habitaciones",
+        "Baños"
       ]
     },
     {
