@@ -138,7 +138,6 @@ Las fotos van en `public/assets/images/` con los nombres que usa el JSON. Si fal
 | `villa-leyva-galeria-1.jpg` a `villa-leyva-galeria-7.jpg` | Galería completa de la Casa colonial en Villa de Leyva (7 fotos) |
 | `medellin.jpg` | Apartamento ejecutivo Medellín |
 | `armenia.jpg` | Casa campestre (inactivo, no se muestra) |
-| `hero.jpg` | Fondo de la portada del inicio |
 | `anfitriones.jpg` | Bloque "¿Tienes un espacio para compartir?" |
 
 ## Prototipo
