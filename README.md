@@ -132,7 +132,7 @@ Las fotos van en `public/assets/images/` con los nombres que usa el JSON. Si fal
 | `loft-bogota.jpg`, `loft-bogota-2.jpg` | Loft moderno en Chapinero |
 | `cartagena.jpg`, `cartagena-2.jpg` | Apartamento frente al mar |
 | `guatape.jpg`, `guatape-2.jpg` | Cabaña en Guatapé |
-| `guatape-3.jpg` a `guatape-7.jpg` | Galería completa de la Cabaña en Guatapé |
+| `guatape-galeria-1.jpg` a `guatape-galeria-7.jpg` | Galería completa de la Cabaña en Guatapé (7 fotos, en el orden del diseño) |
 | `villa-leyva.jpg`, `villa-leyva-2.jpg` | Casa colonial en Villa de Leyva |
 | `medellin.jpg` | Apartamento ejecutivo Medellín |
 | `armenia.jpg` | Casa campestre (inactivo, no se muestra) |
