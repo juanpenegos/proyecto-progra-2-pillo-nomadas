@@ -12,7 +12,12 @@ export const routes: Routes = [
   { path: '', component: HomePage, title: 'Inicio · Pillo Nómadas' },
   { path: 'explorar', component: ExplorePage, title: 'Explorar · Pillo Nómadas' },
   { path: 'alojamientos/:id', component: DetailPage, title: 'Alojamiento · Pillo Nómadas' },
-  { path: 'alojamientos/:id/galeria', component: GalleryPage, title: 'Galería · Pillo Nómadas' },
+  {
+    path: 'alojamientos/:id/galeria',
+    component: GalleryPage,
+    title: 'Galería · Pillo Nómadas',
+    data: { sinMarco: true }, // pantalla completa: sin barra de navegación ni pie
+  },
   { path: 'alojamientos/:id/resena', component: ReviewFormPage, title: 'Escribir una reseña · Pillo Nómadas' },
   { path: 'reserva-confirmada/:id', component: ConfirmationPage, title: 'Reserva confirmada · Pillo Nómadas' },
   { path: 'mis-reservas', component: MyBookingsPage, title: 'Mis reservas · Pillo Nómadas' },

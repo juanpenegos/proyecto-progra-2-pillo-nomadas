@@ -17,8 +17,7 @@
       "activo": true,
       "imagenPrincipal": "assets/images/loft-bogota.jpg",
       "imagenes": [
-        "assets/images/loft-bogota.jpg",
-        "assets/images/loft-bogota-2.jpg"
+        "assets/images/loft-bogota.jpg"
       ],
       "servicios": [
         "Wi-Fi",
@@ -61,6 +60,71 @@
       "reglas": [
         "No fumar",
         "No mascotas"
+      ],
+      "galeria": [
+        {
+          "src": "assets/images/cartagena-galeria-1.jpg",
+          "titulo": "Hamaca frente al mar",
+          "categoria": "Balcón",
+          "seccion": "Balcón y vistas"
+        },
+        {
+          "src": "assets/images/cartagena-galeria-2.jpg",
+          "titulo": "Terraza con vista",
+          "categoria": "Balcón",
+          "seccion": "Balcón y vistas"
+        },
+        {
+          "src": "assets/images/cartagena-galeria-3.jpg",
+          "titulo": "Piscina del edificio",
+          "categoria": "Piscina",
+          "seccion": "Balcón y vistas"
+        },
+        {
+          "src": "assets/images/cartagena-galeria-4.jpg",
+          "titulo": "Sala",
+          "categoria": "Interiores",
+          "seccion": "Espacios interiores"
+        },
+        {
+          "src": "assets/images/cartagena-galeria-5.jpg",
+          "titulo": "Comedor",
+          "categoria": "Interiores",
+          "seccion": "Espacios interiores"
+        },
+        {
+          "src": "assets/images/cartagena-galeria-6.jpg",
+          "titulo": "Habitación principal",
+          "categoria": "Habitaciones",
+          "seccion": "Habitaciones y baño"
+        },
+        {
+          "src": "assets/images/cartagena-galeria-7.jpg",
+          "titulo": "Baño",
+          "categoria": "Baños",
+          "seccion": "Habitaciones y baño"
+        }
+      ],
+      "galeriaSecciones": [
+        {
+          "titulo": "Balcón y vistas",
+          "descripcion": "Hamaca, terraza y piscina con el mar de Bocagrande de fondo."
+        },
+        {
+          "titulo": "Espacios interiores",
+          "descripcion": "Sala y comedor luminosos con vista panorámica a la ciudad y al mar."
+        },
+        {
+          "titulo": "Habitaciones y baño",
+          "descripcion": "Un descanso fresco y cómodo frente al Caribe."
+        }
+      ],
+      "galeriaCategorias": [
+        "Balcón",
+        "Piscina",
+        "Interiores",
+        "Habitaciones",
+        "Baños"
       ]
     },
     {
@@ -95,40 +159,68 @@
       ],
       "galeria": [
         {
-          "src": "assets/images/guatape.jpg",
+          "src": "assets/images/guatape-galeria-1.jpg",
           "titulo": "Vista principal",
-          "categoria": "Exterior"
+          "categoria": "Exterior",
+          "seccion": "Exterior y paisaje"
         },
         {
-          "src": "assets/images/guatape-2.jpg",
+          "src": "assets/images/guatape-galeria-2.jpg",
           "titulo": "Acceso al embalse",
-          "categoria": "Embalse"
+          "categoria": "Habitaciones",
+          "seccion": "Exterior y paisaje"
         },
         {
-          "src": "assets/images/guatape-3.jpg",
+          "src": "assets/images/guatape-galeria-3.jpg",
           "titulo": "Fachada de la cabaña",
-          "categoria": "Exterior"
+          "categoria": "Embalse",
+          "seccion": "Exterior y paisaje"
         },
         {
-          "src": "assets/images/guatape-4.jpg",
+          "src": "assets/images/guatape-galeria-4.jpg",
           "titulo": "Habitación principal",
-          "categoria": "Habitaciones"
+          "categoria": "Baños",
+          "seccion": "Espacios interiores"
         },
         {
-          "src": "assets/images/guatape-5.jpg",
+          "src": "assets/images/guatape-galeria-5.jpg",
           "titulo": "Habitación secundaria",
-          "categoria": "Habitaciones"
+          "categoria": "Habitaciones",
+          "seccion": "Espacios interiores"
         },
         {
-          "src": "assets/images/guatape-6.jpg",
+          "src": "assets/images/guatape-galeria-6.jpg",
           "titulo": "Acceso al baño",
-          "categoria": "Baños"
+          "categoria": "Interiores",
+          "seccion": "Detalles de la estadía"
         },
         {
-          "src": "assets/images/guatape-7.jpg",
+          "src": "assets/images/guatape-galeria-7.jpg",
           "titulo": "Baño con vista",
-          "categoria": "Baños"
+          "categoria": "Embalse",
+          "seccion": "Detalles de la estadía"
         }
+      ],
+      "galeriaSecciones": [
+        {
+          "titulo": "Exterior y paisaje",
+          "descripcion": "La cabaña, su terraza y las vistas abiertas al embalse de Guatapé."
+        },
+        {
+          "titulo": "Espacios interiores",
+          "descripcion": "Ambientes cálidos y luminosos para compartir, cocinar y descansar."
+        },
+        {
+          "titulo": "Detalles de la estadía",
+          "descripcion": "Rincones pensados para bajar el ritmo y disfrutar la naturaleza."
+        }
+      ],
+      "galeriaCategorias": [
+        "Exterior",
+        "Embalse",
+        "Interiores",
+        "Habitaciones",
+        "Baños"
       ]
     },
     {
@@ -160,6 +252,71 @@
       "reglas": [
         "No fiestas",
         "Máximo 8 huéspedes"
+      ],
+      "galeria": [
+        {
+          "src": "assets/images/villa-leyva-galeria-1.jpg",
+          "titulo": "Fachada colonial",
+          "categoria": "Exterior",
+          "seccion": "Fachada y patio"
+        },
+        {
+          "src": "assets/images/villa-leyva-galeria-2.jpg",
+          "titulo": "Patio con fuente",
+          "categoria": "Patio",
+          "seccion": "Fachada y patio"
+        },
+        {
+          "src": "assets/images/villa-leyva-galeria-3.jpg",
+          "titulo": "Vista a las montañas",
+          "categoria": "Exterior",
+          "seccion": "Fachada y patio"
+        },
+        {
+          "src": "assets/images/villa-leyva-galeria-4.jpg",
+          "titulo": "Sala principal",
+          "categoria": "Interiores",
+          "seccion": "Espacios interiores"
+        },
+        {
+          "src": "assets/images/villa-leyva-galeria-5.jpg",
+          "titulo": "Comedor",
+          "categoria": "Interiores",
+          "seccion": "Espacios interiores"
+        },
+        {
+          "src": "assets/images/villa-leyva-galeria-6.jpg",
+          "titulo": "Habitación principal",
+          "categoria": "Habitaciones",
+          "seccion": "Habitaciones y baños"
+        },
+        {
+          "src": "assets/images/villa-leyva-galeria-7.jpg",
+          "titulo": "Baño",
+          "categoria": "Baños",
+          "seccion": "Habitaciones y baños"
+        }
+      ],
+      "galeriaSecciones": [
+        {
+          "titulo": "Fachada y patio",
+          "descripcion": "La casa colonial, su patio de piedra y las vistas al valle de Villa de Leyva."
+        },
+        {
+          "titulo": "Espacios interiores",
+          "descripcion": "Salas y comedor con vigas de madera para compartir en familia."
+        },
+        {
+          "titulo": "Habitaciones y baños",
+          "descripcion": "Descanso cómodo en pleno centro histórico."
+        }
+      ],
+      "galeriaCategorias": [
+        "Exterior",
+        "Patio",
+        "Interiores",
+        "Habitaciones",
+        "Baños"
       ]
     },
     {

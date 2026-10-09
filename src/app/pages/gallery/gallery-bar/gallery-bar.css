@@ -1,0 +1,56 @@
+.barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--navbar-height);
+  padding-inline: var(--space-3);
+  background-color: var(--white);
+  border-bottom: 1px solid var(--green-100);
+  box-shadow: var(--shadow-sm);
+}
+
+.barra__volver {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--touch-target);
+  font-size: var(--text-a);
+  font-weight: 600;
+  color: var(--green-700);
+}
+
+/* En móvil solo se ve la flecha; el texto queda para lectores de pantalla */
+.barra__volver-texto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.barra__nombre {
+  max-width: none;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--green-900);
+}
+
+/* ===== Escritorio ===== */
+@media (min-width: 48rem) {
+  .barra {
+    height: 4.75rem;
+    padding-inline: var(--space-5);
+  }
+
+  .barra__volver-texto {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+  }
+
+  .barra__nombre {
+    font-size: 1.125rem;
+  }
+}
