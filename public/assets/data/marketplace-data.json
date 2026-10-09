@@ -17,8 +17,7 @@
       "activo": true,
       "imagenPrincipal": "assets/images/loft-bogota.jpg",
       "imagenes": [
-        "assets/images/loft-bogota.jpg",
-        "assets/images/loft-bogota-2.jpg"
+        "assets/images/loft-bogota.jpg"
       ],
       "servicios": [
         "Wi-Fi",
