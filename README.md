@@ -140,9 +140,11 @@ Las fotos van en `public/assets/images/` con los nombres que usa el JSON. Si fal
 | `armenia.jpg` | Casa campestre (inactivo, no se muestra) |
 | `anfitriones.jpg` | Bloque "¿Tienes un espacio para compartir?" |
 
-## Prototipo
+## Diseño
 
-https://www.figma.com/design/ZvvSezJi9JoGXtPDnm2meV/pillos-nomadas-final
+- **Diseño de baja fidelidad:** https://drive.google.com/file/d/1LvzEUqMN1osvlI4sXCa9QhiiCnT9VthR/view?usp=sharing
+- **Alta fidelidad, diseño (Figma):** https://www.figma.com/design/8xiFFFCTM05oEbLwyGIWCB/pillo-nomadas-version-final?node-id=0-1&t=BUaSUAEQkp1QYYbI-1
+- **Alta fidelidad, prototipo interactivo (Figma):** https://www.figma.com/proto/8xiFFFCTM05oEbLwyGIWCB/pillo-nomadas-version-final?node-id=1-4428&p=f&t=YnYGhPDv3KRmlCOd-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1
 
 ## Nota sobre los datos
 
