@@ -2,13 +2,13 @@
 
 ## Descripción
 
-Pillo Nómadas es una página web para buscar alojamientos de estadía temporal, cotizar una estadía y simular una reserva. Es el proyecto del curso Desarrollo de Sistemas de Información 3 de la Universidad El Bosque.
+Pillo Nómadas es una página web para buscar alojamientos de estadía temporal, cotizar una estadía y simular una reserva. 
 
 No tiene backend ni base de datos. Los alojamientos y las reseñas salen de un archivo JSON, y las reservas y reseñas nuevas se guardan solo en memoria, así que se pierden al recargar la página.
 
 ## Integrantes
 
-- Juan Esteban Penagos Fetecua (trabajo individual)
+- Juan Esteban Penagos Fetecua 
 
 ## Tecnologías utilizadas
 
@@ -25,7 +25,7 @@ No tiene backend ni base de datos. Los alojamientos y las reseñas salen de un a
 - npm 11 (viene con Node.js)
 - Git
 
-No hace falta instalar Angular CLI aparte, ya viene en las dependencias del proyecto.
+
 
 ## Instrucciones de instalación
 
