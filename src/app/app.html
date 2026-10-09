@@ -1,6 +1,10 @@
 <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
-<app-navbar [enlaces]="enlaces" />
+@if (conMarco()) {
+  <app-navbar [enlaces]="enlaces" />
+}
 <main id="contenido">
   <router-outlet />
 </main>
-<app-footer />
+@if (conMarco()) {
+  <app-footer />
+}
