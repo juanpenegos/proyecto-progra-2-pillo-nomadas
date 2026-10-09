@@ -61,6 +61,71 @@
       "reglas": [
         "No fumar",
         "No mascotas"
+      ],
+      "galeria": [
+        {
+          "src": "assets/images/cartagena-galeria-1.jpg",
+          "titulo": "Hamaca frente al mar",
+          "categoria": "Balcón",
+          "seccion": "Balcón y vistas"
+        },
+        {
+          "src": "assets/images/cartagena-galeria-2.jpg",
+          "titulo": "Terraza con vista",
+          "categoria": "Balcón",
+          "seccion": "Balcón y vistas"
+        },
+        {
+          "src": "assets/images/cartagena-galeria-3.jpg",
+          "titulo": "Piscina del edificio",
+          "categoria": "Piscina",
+          "seccion": "Balcón y vistas"
+        },
+        {
+          "src": "assets/images/cartagena-galeria-4.jpg",
+          "titulo": "Sala",
+          "categoria": "Interiores",
+          "seccion": "Espacios interiores"
+        },
+        {
+          "src": "assets/images/cartagena-galeria-5.jpg",
+          "titulo": "Comedor",
+          "categoria": "Interiores",
+          "seccion": "Espacios interiores"
+        },
+        {
+          "src": "assets/images/cartagena-galeria-6.jpg",
+          "titulo": "Habitación principal",
+          "categoria": "Habitaciones",
+          "seccion": "Habitaciones y baño"
+        },
+        {
+          "src": "assets/images/cartagena-galeria-7.jpg",
+          "titulo": "Baño",
+          "categoria": "Baños",
+          "seccion": "Habitaciones y baño"
+        }
+      ],
+      "galeriaSecciones": [
+        {
+          "titulo": "Balcón y vistas",
+          "descripcion": "Hamaca, terraza y piscina con el mar de Bocagrande de fondo."
+        },
+        {
+          "titulo": "Espacios interiores",
+          "descripcion": "Sala y comedor luminosos con vista panorámica a la ciudad y al mar."
+        },
+        {
+          "titulo": "Habitaciones y baño",
+          "descripcion": "Un descanso fresco y cómodo frente al Caribe."
+        }
+      ],
+      "galeriaCategorias": [
+        "Balcón",
+        "Piscina",
+        "Interiores",
+        "Habitaciones",
+        "Baños"
       ]
     },
     {
