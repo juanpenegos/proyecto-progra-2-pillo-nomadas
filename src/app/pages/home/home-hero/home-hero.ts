@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 export interface CriteriosBusqueda {
@@ -17,9 +17,6 @@ export class HomeHero {
   @Input() ciudades: string[] = [];
   @Input() opcionesHuespedes: number[] = [];
   @Output() buscar = new EventEmitter<CriteriosBusqueda>();
-
-  /** Si falta hero.jpg, se queda el fondo verde oscuro y el diseño no se rompe. */
-  protected readonly fotoFallo = signal(false);
 
   /** Para buscar hay que llenar primero el destino y los huéspedes. */
   protected readonly busqueda = new FormGroup({
